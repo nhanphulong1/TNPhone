@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TNPhone Shop</title>
+    <?php 
+        include_once(__DIR__.'/partials/config.php');
+        include_once(__DIR__.'/partials/head.php');
+    ?>
 </head>
 <body>
     
