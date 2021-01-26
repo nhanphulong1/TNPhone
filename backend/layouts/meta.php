@@ -1,5 +1,6 @@
 <!-- Meta chung -->
 <meta charset="utf-8" />
+
 <!-- End: Meta chung -->
 
 <!-- Meta hỗ trợ SEO cho Google -->
