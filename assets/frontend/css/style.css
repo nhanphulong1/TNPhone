@@ -1,0 +1,137 @@
+/* Lưu file */
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 22px;
+}
+
+/* Header */
+
+#header{
+    background: darkgray;
+    background-size: cover;
+    color: black;
+    background: url('/shared/bg_header_fe.jpg');
+}
+
+#tieudelogo{
+    width: 70%;
+    margin: 0 auto;
+}
+
+    /* Logo */
+    #logo{
+        height: 45px;
+        margin: 0px;
+    }
+
+    #logo img{
+        width: 42px;
+        border-radius: 50%;
+        margin-bottom: 8px;
+        margin-right: 10px;
+    }
+    
+    #logo a{
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 800;
+        font-size: 32px;
+        line-height: 45px;
+        letter-spacing: 2px;
+        color: black;
+    }
+
+    #logo a span{
+        color: red;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 900;
+        font-size: 30px;
+    }
+
+    #logo a:hover{
+        text-decoration: none;
+    }
+    /* End Logo */
+
+    /* Search */
+    #search{
+        padding-top: 2px;
+    }
+
+    #search div{
+        width: 95%;
+        position: relative;
+        display: flex;
+    }
+
+    #search input{
+        width: 100%;
+        border: 1px solid lightgray;
+        border-right: none;
+        padding: 5px;
+        height: 40px;
+        border-radius: 5px 0 0 5px;
+        outline: none;
+        color: #9DBFAF;
+    }
+
+    #search input:focus{
+        color: black;
+    }
+
+    #search .searchbtn{
+        width: 40px;
+        height: 40px;
+        border: 1px solid #00B4CC;
+        background: #00B4CC;
+        text-align: center;
+        color: #fff;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        font-size: 20px;
+    }
+    /* End Search */
+
+
+    /* Tài khoản */
+    #taikhoan{
+        padding-right: 40px;
+    }
+
+    #cartbutton{
+        padding: 1px;
+    }
+
+    #taikhoan a{
+        text-decoration: none;
+        /* margin: 3px 10px; */
+        padding: 4px 15px;
+        color: black;
+        display: inline-block;
+    }
+
+    
+    /* End Tài khoản */
+
+#menu{
+    border: 1px solid green;
+    height: 45px;
+    
+}
+/* End Header */
+
+/* Menu */
+#menu{
+    background: black;
+
+}
+
+.row .col{
+    text-align: center;
+}
+
+#menu a{
+    color: white;
+}
+/* End Menu */

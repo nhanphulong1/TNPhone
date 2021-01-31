@@ -7,6 +7,9 @@
     ?>
 </head>
 <body>
-    
+    <?php include_once(__DIR__.'/partials/header.php') ?>
+    <div class="container">
+        
+    </div>
 </body>
 </html>
