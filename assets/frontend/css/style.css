@@ -115,7 +115,7 @@
     /* End Tài khoản */
 
 #menu{
-    border: 1px solid green;
+    /* border: 1px solid green; */
     height: 45px;
     
 }
@@ -135,3 +135,7 @@
     color: white;
 }
 /* End Menu */
+
+.container{
+    padding: 0px;
+}
