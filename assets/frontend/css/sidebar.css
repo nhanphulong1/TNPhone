@@ -29,3 +29,7 @@
     width: 100%;
     /* height: 45px; */
 }
+
+#sidebar ul li:hover{
+    border: 1px solid black;
+}

@@ -9,6 +9,36 @@
     <link rel="stylesheet" type="text/css" href="../../assets/frontend/css/index.css">
 </head>
 <body>
+    <?php 
+        $nsx='';
+        if(isset($_GET['nsx']))
+            $nsx=$_GET['nsx'];
+        // Kết nối csdl.
+        include_once(__DIR__.'/../dbconnect.php');
+        //câu lệnh select
+        $sql= <<<EOT
+        SELECT *
+        FROM sanpham sp left JOIN hinhsanpham hsp
+        ON sp.sp_ma = hsp.sp_ma
+        JOIN nhasanxuat nsx ON sp.nsx_ma=nsx.nsx_ma
+        WHERE nsx_ten LIKE '%$nsx%'
+        GROUP BY sp.sp_ma
+EOT;
+        // Câu lệnh thực thi
+        $result = mysqli_query($conn,$sql);
+        $ds_sanpham=[];
+        while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+            $ds_sanpham[] = array(
+                'sp_ma' => $row['sp_ma'],
+                'sp_ten' => $row['sp_ten'],
+                'sp_gia' => $row['sp_gia'],
+                'hsp_tentaptin' => $row['hsp_tentaptin']
+            );
+        }
+    ?>
+
+
+
     <!-- Header -->
     <?php include_once(__DIR__.'/partials/header.php') ?>
 
@@ -46,9 +76,19 @@
             <div class="col-md-3" id="sidebar">
                 <?php include_once(__DIR__.'/partials/sidebar.php') ?>
             </div>
+
             <!-- Hiển thị sản phẩm -->
             <div class="col-md-9" id="contain">
-                
+                <?php foreach($ds_sanpham as $sp):?>
+                <div class="card" style="width: 8rem; display: inline-block;">
+                    <img src="../../shared/<?= ($sp['hsp_tentaptin']=="") ? 'default-image.jpg':$sp['hsp_tentaptin'] ?>" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $sp['sp_ten']?></h5>
+                        <p class="card-text"><?= number_format($sp['sp_gia'],0,".",",")." VNĐ"?></p>
+                        <a href="#" class="btn btn-warning">Mua hàng</a>
+                    </div>
+                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>

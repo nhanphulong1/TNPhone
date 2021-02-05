@@ -1,4 +1,35 @@
 #contain{
-    border: 1px solid green;
-    width: 500px;
+    /* border: 1px solid green; */
+    /* width: 500px; */
+    padding-right: 15px;
+}
+
+.card{
+    margin: 18px 10px;
+    border: none;
+}
+
+.card-body{
+    padding: 5px;
+    text-align: center;
+}
+
+.card-title{
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 3px; 
+}
+
+.card-text{
+    color: red;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 2px;
+}
+
+.card-body a{
+    /* display: inline-block; */
+    margin: auto;
+    padding: 5px 10px;
+    font-size: 16px;
 }
