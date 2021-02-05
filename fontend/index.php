@@ -48,9 +48,13 @@
             </div>
             <!-- Hiển thị sản phẩm -->
             <div class="col-md-9" id="contain">
+                
             </div>
         </div>
     </div>
+    <!-- Footer -->
+    <?php include_once(__DIR__.'/partials/footer.php') ?>
+    <!-- Scripts -->
     <?php include_once(__DIR__.'/scripts.php') ?>
 </body>
 </html>
