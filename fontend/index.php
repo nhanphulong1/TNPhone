@@ -17,7 +17,8 @@
         include_once(__DIR__.'/../dbconnect.php');
         //câu lệnh select
         $sql= <<<EOT
-        SELECT *
+        SELECT sp.sp_ma, sp_ten, sp_gia,
+            hsp_tentaptin
         FROM sanpham sp left JOIN hinhsanpham hsp
         ON sp.sp_ma = hsp.sp_ma
         JOIN nhasanxuat nsx ON sp.nsx_ma=nsx.nsx_ma
@@ -79,16 +80,22 @@ EOT;
 
             <!-- Hiển thị sản phẩm -->
             <div class="col-md-9" id="contain">
+                <?php if(!empty($ds_sanpham)): ?>
                 <?php foreach($ds_sanpham as $sp):?>
                 <div class="card" style="width: 8rem; display: inline-block;">
-                    <img src="../../shared/<?= ($sp['hsp_tentaptin']=="") ? 'default-image.jpg':$sp['hsp_tentaptin'] ?>" class="card-img-top">
+                    <a href="/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>"><img src="../../shared/<?= ($sp['hsp_tentaptin']=="") ? 'default-image.jpg':$sp['hsp_tentaptin'] ?>" class="card-img-top"></a>
                     <div class="card-body">
-                        <h5 class="card-title"><?= $sp['sp_ten']?></h5>
-                        <p class="card-text"><?= number_format($sp['sp_gia'],0,".",",")." VNĐ"?></p>
+                        <a href="/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>">
+                            <h5 class="card-title"><?= $sp['sp_ten']?></h5>
+                            <p class="card-text"><?= number_format($sp['sp_gia'],0,".",",")." VNĐ"?></p>
+                        </a>
                         <a href="#" class="btn btn-warning">Mua hàng</a>
                     </div>
                 </div>
                 <?php endforeach; ?>
+                <?php else: ?>
+                    <div id="tb_khong"><p>Không có sản phẩm này.</p></div>
+                <?php endif; ?>
             </div>
         </div>
     </div>

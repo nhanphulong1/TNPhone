@@ -14,7 +14,7 @@
                     </button>
                 </div>
             </div>
-            <div id="taikhoan" class="col-md-5">
+            <div id="taikhoan" class="col-md-5 text-right">
                 <a href="#" class="btn btn-info" id="cartbutton">
                     <i class="fa fa-shopping-cart"></i>
                     Giỏ hàng<span class="badge bg-warning"></span>
@@ -34,16 +34,16 @@
     <div class="container">
 		<div class="row">
 			<div class="col">
-				<a href="">Trang chủ</a>
+				<a href="index.php">Trang chủ</a>
 			</div>
 			<div class="col">
-				<a href="">Sản phẩm</a>
+				<a href="./layouts/sanpham.php">Sản phẩm</a>
 			</div>
 			<div class="col">
-				<a href="">Giới thiệu</a>
+				<a href="./layouts/gioithieu.php">Giới thiệu</a>
 			</div>
 			<div class="col">
-				<a href="">Liên hệ</a>
+				<a href="./layouts/lienhe.php">Liên hệ</a>
 			</div>
 		</div>
 	</div>
