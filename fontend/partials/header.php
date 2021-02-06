@@ -2,7 +2,7 @@
     <div id="tieudelogo">
         <div  class="row">
             <div class="col-md-3" id="logo">
-                <a href="./index.php">
+                <a href="/fontend/index.php">
                     <img src="/shared/logo.png" alt="Logo TNPhone"><span>TN</span>PHONE
                 </a>
             </div>

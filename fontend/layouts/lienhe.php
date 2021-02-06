@@ -15,29 +15,32 @@
     <?php include_once(__DIR__.'/../../dbconnect.php') ?>
         <h2>LIÊN HỆ VỚI CHÚNG TÔI</h2>
         <hr>
-        <form id="frmLienHe" name="frmLienHe" onsubmit="return validateForm()" action="" method="post">
+        <form action="" method="post" onsubmit="return checkform()">
             <div class="form-group">
                 <label for="email">Email của bạn</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Email của bạn" require>
+                <input type="email" class="form-control" onchange="checkEmail()" id="email" name="email" placeholder="Email của bạn">
+                <div class="thongbao" id="alert-email"></div>
             </div>
             <hr>
             <div class="form-group">
                 <label for="title">Tiêu đề của bạn</label>
-                <input type="text" class="form-control" id="title" name="title" placeholder="Tiêu đề của bạn" require>
+                <input type="text" class="form-control" onchange="checkTitle()" id="title" name="title" placeholder="Tiêu đề của bạn">
+                <div class="thongbao" id="alert-title"></div>
             </div>
             <hr>
             <div class="form-group">
                 <label for="message">Lời nhắn của bạn</label>
-                <textarea name="message" class="form-control"></textarea>
+                <textarea name="message" id="message" class="form-control" onchange="checkMessage()"></textarea>
+                <div class="thongbao" id="alert-message"></div>
             </div>
-            <button class="btn btn-info" name="btnGoiLoiNhan">Gởi lời nhắn</button>
+            <button type="submit" class="btn btn-info" name="btnGoiLoiNhan">Gởi lời nhắn</button>
         </form>
         <?php
             if(isset($_POST['btnGoiLoiNhan'])){
                 $tieude = $_POST['title'];
                 $email = $_POST['email'];
                 $noidung = $_POST['message'];
-                if(!empty($tieude) && !empty($email) && !empty($noidung)){
+                //if(!empty($tieude) && !empty($email) && !empty($noidung)){
                     // Cau lenh SQL
                     $sql = <<<EOT
                     INSERT INTO lienhe
@@ -53,7 +56,7 @@ EOT;
                     }else{
                         echo "<script>alert('Gởi liên hệ thất bại! Xin vui lòng thử lại sau vài phút');</script>";
                     }
-                }
+                //}
             }
         ?>
     </div>
@@ -63,15 +66,57 @@ EOT;
     <!-- Scripts -->
     <?php include_once(__DIR__.'/../scripts.php') ?>
     <script>
-        function validateForm(){
-            var title = document.getElementById('title').value;
-            var email = document.getElementById('email').value;
-            var message = document.getElementById('message').value;
-            alert (title);
-            if(title == "" || email == "" || message == ""){
-                return false;
-            }else {
+        function checkform(){
+            // var title = document.getElementById("title").value;
+            // var email = document.getElementById('email').value;
+            // var message = document.getElementById('message').value;
+            // if( title != "" && email != "" && message != ""){
+            checkTitle();
+            checkEmail();
+            checkMessage();
+            if( checkTitle() && checkEmail() && checkMessage() ){
                 return true;
+            }else {
+                return false;
+            }
+        }
+
+        function checkTitle() {
+            var title = document.getElementById("title");
+            if(title.value != ""){
+                document.getElementById("alert-title").className="thongbao alert alert-success";
+                document.getElementById("alert-title").innerHTML="Hoàn thành!";
+                return true;
+            }else{
+                document.getElementById("alert-title").className="thongbao alert alert-danger";
+                document.getElementById("alert-title").innerHTML="Vui lòng điền đầy đủ thông tin!";
+                return false;
+            }
+        }
+
+        function checkEmail() {
+            var email = document.getElementById('email');
+            if(email.value != ""){
+                document.getElementById("alert-email").className="thongbao alert alert-success";
+                document.getElementById("alert-email").innerHTML="Hoàn thành!";
+                return true;
+            }else{
+                document.getElementById("alert-email").className="thongbao alert alert-danger";
+                document.getElementById("alert-email").innerHTML="Vui lòng điền đầy đủ thông tin!";
+                return false;
+            }
+        }
+
+        function checkMessage() {
+            var message = document.getElementById('message');
+            if(message.value != ""){
+                document.getElementById("alert-message").className="thongbao alert alert-success";
+                document.getElementById("alert-message").innerHTML="Hoàn thành!";
+                return true;
+            }else{
+                document.getElementById("alert-message").className="thongbao alert alert-danger";
+                document.getElementById("alert-message").innerHTML="Vui lòng điền đầy đủ thông tin!";
+                return false;
             }
         }
     </script>

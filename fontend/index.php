@@ -73,13 +73,8 @@ EOT;
         </div>
 
         <div class="row">
-            <!-- Thanh menu đứng -->
-            <div class="col-md-3" id="sidebar">
-                <?php include_once(__DIR__.'/partials/sidebar.php') ?>
-            </div>
-
             <!-- Hiển thị sản phẩm -->
-            <div class="col-md-9" id="contain">
+            <div class="col-md-12" id="contain">
                 <?php if(!empty($ds_sanpham)): ?>
                 <?php foreach($ds_sanpham as $sp):?>
                 <div class="card" style="width: 8rem; display: inline-block;">
