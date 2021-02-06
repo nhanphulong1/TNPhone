@@ -34,16 +34,16 @@
     <div class="container">
 		<div class="row">
 			<div class="col">
-				<a href="index.php">Trang chủ</a>
+				<a href="/fontend/index.php">Trang chủ</a>
 			</div>
 			<div class="col">
-				<a href="./layouts/sanpham.php">Sản phẩm</a>
+				<a href="/fontend/layouts/sanpham.php">Sản phẩm</a>
 			</div>
 			<div class="col">
-				<a href="./layouts/gioithieu.php">Giới thiệu</a>
+				<a href="/fontend/layouts/gioithieu.php">Giới thiệu</a>
 			</div>
 			<div class="col">
-				<a href="./layouts/lienhe.php">Liên hệ</a>
+				<a href="/fontend/layouts/lienhe.php">Liên hệ</a>
 			</div>
 		</div>
 	</div>
