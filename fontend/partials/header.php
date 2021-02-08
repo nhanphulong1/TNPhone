@@ -19,12 +19,13 @@
                     <i class="fa fa-shopping-cart"></i>
                     Giỏ hàng<span class="badge bg-warning"></span>
                 </a>
-                <?php if(!isset($_COOKIE['tendangnhap'])): ?>
-                    <a href="#đăng nhập">Đăng nhập</a>
-                    <a href="#đăng ký">Đăng ký</a>
+                <?php if(!isset($_COOKIE['kh_tendangnhap'])): ?>
+                    <a href="/fontend/layouts/dangnhap.php">Đăng nhập</a>
+                    <a href="/fontend/layouts/dangky.php">Đăng ký</a>
                 <?php else: ?>
                     <img src="/TNPhone/shared/default-avatar.jpg" alt="Avatar">
-                    <a href="#đăng xuất">Đăng xuất</a>
+                    <label><?=$_COOKIE['kh_hoten'] ?></label>
+                    <a href="/fontend/layouts/dangxuat.php">Đăng xuất</a>
                 <?php endif; ?>
             </div>
         </div>
