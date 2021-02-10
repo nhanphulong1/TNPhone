@@ -40,6 +40,11 @@ hr{
     margin-bottom: 35px;
 }
 
+#frmDangKy .thongbao{
+    font-size: 18px;
+    padding: 2px 10px;
+}
+
 #frmDangKy button{
     margin-bottom: 10px;
 }
@@ -51,7 +56,6 @@ hr{
 
 .form-group label{
     display: inline-block;
-    width: 30%;
 }
 
 .form-group input{
