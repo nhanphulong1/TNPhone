@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div id="taikhoan" class="col-md-5 text-right">
-                <a href="#" class="btn btn-info" id="cartbutton">
+                <a href="/fontend/thanhtoan/giohang.php" class="btn btn-info" id="cartbutton">
                     <i class="fa fa-shopping-cart"></i>
                     Giỏ hàng<span class="badge bg-warning"></span>
                 </a>

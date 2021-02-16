@@ -78,7 +78,7 @@ EOT;
                 <?php if(!empty($ds_sanpham)): ?>
                 <?php foreach($ds_sanpham as $sp):?>
                 <div class="card" style="width: 8rem; display: inline-block;">
-                    <a href="/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>"><img src="../../shared/<?= ($sp['hsp_tentaptin']=="") ? 'default-image.jpg':$sp['hsp_tentaptin'] ?>" class="card-img-top"></a>
+                    <a href="/fontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>"><img src="../../shared/<?= ($sp['hsp_tentaptin']=="") ? 'default-image.jpg':$sp['hsp_tentaptin'] ?>" class="card-img-top"></a>
                     <div class="card-body">
                         <a href="/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>">
                             <h5 class="card-title"><?= $sp['sp_ten']?></h5>
