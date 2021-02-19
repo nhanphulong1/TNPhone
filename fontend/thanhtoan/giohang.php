@@ -80,7 +80,7 @@ if (session_id() === '') {
                                         <td><?= $stt ?></td>
                                         <td>
                                             <?php if (empty($sanpham['hinhdaidien'])) : ?>
-                                                <img src="/shared/default-image_600.png" class="img-fluid hinhdaidien" />
+                                                <img src="/shared/default-image.jpg" class="img-fluid hinhdaidien" />
                                             <?php else : ?>
                                                 <img src="/shared/<?= $sanpham['hinhdaidien'] ?>" class="img-fluid hinhdaidien" />
                                             <?php endif; ?>

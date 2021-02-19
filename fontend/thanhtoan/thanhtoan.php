@@ -10,8 +10,8 @@ error_reporting(E_ALL);
 // require_once __DIR__ . '/../../vendor/autoload.php';
 
 // Sử dụng thư viện PHP Mailer
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+// use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\Exception;
 
 // hàm `session_id()` sẽ trả về giá trị SESSION_ID (tên file session do Web Server tự động tạo)
 // - Nếu trả về Rỗng hoặc NULL => chưa có file Session tồn tại
@@ -69,16 +69,16 @@ EOT;
 
     // Thông tin đơn hàng
     $dh_ngaylap = date('Y-m-d'); // Lấy ngày hiện tại theo định dạng yyyy-mm-dd
-    $dh_ngaygiao = date('Y-m-d');
-    $dh_noigiao = '';
+    $dh_noigiao = $khachhangRow['kh_diachi'];
     $dh_trangthaithanhtoan = 0; // Mặc định là 0 chưa thanh toán
     $httt_ma = 1; // Mặc định là 1
 
     // 2. Thực hiện câu lệnh Tạo mới (INSERT) Đơn hàng
     // Câu lệnh INSERT
     $sqlInsertDonHang = <<<EOT
-    INSERT INTO `donhang` (`dh_ngaylap`, `dh_ngaygiao`, `dh_noigiao`, `dh_trangthaithanhtoan`, `httt_ma`, `kh_tendangnhap`) 
-        VALUES ('$dh_ngaylap', '$dh_ngaygiao', N'$dh_noigiao', '$dh_trangthaithanhtoan', '$httt_ma', '$kh_tendangnhap');
+    INSERT INTO donhang
+	(dh_ngaylap, dh_trangthai, dh_noigiao, httt_ma, kh_tendangnhap)
+	VALUES ( now(), $dh_trangthaithanhtoan, '$dh_noigiao', $httt_ma, '$kh_tendangnhap');
 EOT;
     // print_r($sqlInsertDonHang); die;
 
@@ -104,8 +104,9 @@ EOT;
 
         // 4.2. Câu lệnh INSERT
         $sqlInsertSanPhamDonDatHang = <<<EOT
-        INSERT INTO `sanpham_dondathang` (`sp_ma`, `dh_ma`, `sp_dh_soluong`, `sp_dh_dongia`) 
-            VALUES ($sp_ma, $dh_ma, $sp_dh_soluong, $sp_dh_dongia);
+        INSERT INTO chitietdathang
+        (sp_ma, dh_ma, ctdh_soluong, ctdh_gia)
+        VALUES ($sp_ma, $dh_ma, $sp_dh_soluong, $sp_dh_dongia)
 EOT;
 
         // 4.3. Thực thi INSERT

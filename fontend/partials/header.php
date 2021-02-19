@@ -8,10 +8,12 @@
             </div>
             <div id="search" class="col-md-4">
                 <div>
-                    <input type="text" class="searchTerm" placeholder="Search for ...">
-                    <button type="submit" class="searchbtn">
+                    <input type="text" id="searchIP" class="searchTerm" placeholder="Search for ...">
+                    <button type="submit" class="searchbtn" id="btnSearch">
                         <i class="fa fa-search"></i>
                     </button>
+                    <ul id="search-ajax">
+                    </ul>
                 </div>
             </div>
             <div id="taikhoan" class="col-md-5 text-right">
@@ -19,14 +21,16 @@
                     <i class="fa fa-shopping-cart"></i>
                     Giỏ hàng<span class="badge bg-warning"></span>
                 </a>
-                <?php if(!isset($_COOKIE['kh_tendangnhap'])): ?>
-                    <a href="/fontend/layouts/dangnhap.php">Đăng nhập</a>
-                    <a href="/fontend/layouts/dangky.php">Đăng ký</a>
-                <?php else: ?>
-                    <img src="/TNPhone/shared/default-avatar.jpg" alt="Avatar">
-                    <label><?=$_COOKIE['kh_hoten'] ?></label>
-                    <a href="/fontend/layouts/dangxuat.php">Đăng xuất</a>
-                <?php endif; ?>
+                <div id="account">
+                    <?php if(!isset($_COOKIE['kh_tendangnhap'])): ?>
+                        <a href="/fontend/layouts/dangnhap.php">Đăng nhập</a>
+                        <a href="/fontend/layouts/dangky.php">Đăng ký</a>
+                    <?php else: ?>
+                        <img src="/shared/default-avatar.jpg" alt="Avatar" id="avatar-img">
+                        <label><?=$_COOKIE['kh_hoten'] ?></label>
+                        <a href="/fontend/layouts/dangxuat.php">Đăng xuất</a>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
     </div>

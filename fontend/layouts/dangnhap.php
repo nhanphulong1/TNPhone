@@ -50,11 +50,11 @@
         if(isset($_POST['btnDangNhap'])){
             $kh_tendangnhap = $_POST['kh_tendangnhap'];
             $kh_matkhau = $_POST['kh_matkhau'];
-            
+            $password = md5($kh_matkhau);
             $sqlDangNhap = <<<EOT
                 SELECT *
                 FROM khachhang
-                WHERE kh_tendangnhap = '$kh_tendangnhap' AND kh_matkhau = '$kh_matkhau'
+                WHERE kh_tendangnhap = '$kh_tendangnhap' AND kh_matkhau = '$password'
             EOT;
 
             $resultDangNhap = mysqli_query($conn,$sqlDangNhap);

@@ -13,6 +13,7 @@
         $nsx='';
         if(isset($_GET['nsx']))
             $nsx=$_GET['nsx'];
+        
         // Kết nối csdl.
         include_once(__DIR__.'/../dbconnect.php');
         //câu lệnh select
@@ -80,7 +81,7 @@ EOT;
                 <div class="card" style="width: 8rem; display: inline-block;">
                     <a href="/fontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>"><img src="../../shared/<?= ($sp['hsp_tentaptin']=="") ? 'default-image.jpg':$sp['hsp_tentaptin'] ?>" class="card-img-top"></a>
                     <div class="card-body">
-                        <a href="/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>">
+                        <a href="/fontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>">
                             <h5 class="card-title"><?= $sp['sp_ten']?></h5>
                             <p class="card-text"><?= number_format($sp['sp_gia'],0,".",",")." VNĐ"?></p>
                         </a>

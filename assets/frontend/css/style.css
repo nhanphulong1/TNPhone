@@ -10,9 +10,10 @@
 
 #header{
     background: darkgray;
-    background-size: cover;
+    /* background-size: cover; */
     color: black;
     background: url('/shared/bg_header_fe.jpg');
+    background-size: 100%;
 }
 
 #tieudelogo{
@@ -81,6 +82,14 @@
         color: black;
     }
 
+    #search input:focus ~ #search-ajax{
+        display: block;
+    }
+/* 
+    #search:hover #search-ajax{
+        display: block;
+    } */
+
     #search .searchbtn{
         width: 40px;
         height: 40px;
@@ -92,25 +101,96 @@
         cursor: pointer;
         font-size: 20px;
     }
+
+    #search-ajax{
+        display: none;
+        position: absolute;
+        z-index: 99;
+        background-color: white;
+        width: 100%;
+        top: 45px;
+        /* border-radius: 5px; */
+    }
+
+    #search-ajax:hover{
+        display: block;
+    }
+
+    #search-ajax li{
+        border: 1px solid lightgray;
+        list-style-type: none;
+    }
+
+    #search-ajax li:hover{
+        background-color: lightgray;
+    }
+
+    #search-ajax li a{
+        display: block;
+        color: black;
+        padding: 4px 5px;
+        text-decoration: none;
+        overflow: hidden;
+    }
+
+    #search-ajax li a h6{
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 0px;
+    }
+
+    #search-ajax li a .giasp{
+        color: red;
+        font-size: 16px;
+    }
+
+    #search-ajax li a img{
+        height: 50px;
+        margin-right: 5px;
+        float: left;
+    }
+
     /* End Search */
 
 
     /* Tài khoản */
-    #taikhoan{
-        padding-right: 40px;
-    }
+    /* #taikhoan{ */
+        /* padding-right: 40px; */
+    /* } */
 
     #cartbutton{
         padding: 1px;
+        margin-right: 10px;
     }
 
     #taikhoan a{
         text-decoration: none;
         /* margin: 3px 10px; */
-        padding: 4px 15px;
+        padding: 4px 10px;
         color: black;
         display: inline-block;
         font-size: 22px;
+    }
+
+    #avatar-img{
+        border-radius: 50%;
+        height: 32px;
+    }
+    
+    #account{
+        display: inline-block;
+        /* background-color: lightgrey;
+        border-radius: 10px; */
+    }
+
+    #account label{
+        font-size: 18px;
+    }
+
+    #account a{
+        font-size: 20px;
+        font-weight: bold;
+        padding: 5px 15px 5px 5px;
     }
 
     
@@ -118,7 +198,7 @@
 
 #menu{
     /* border: 1px solid green; */
-    height: 45px;
+    min-height: 25px;
     
 }
 /* End Header */
@@ -135,6 +215,14 @@
 
 #menu a{
     color: white;
+    display: block;
+    padding: 3px;
+    text-decoration: none;
+}
+
+#menu a:hover{
+    background-color: lightgrey;
+    color: black;
 }
 /* End Menu */
 
