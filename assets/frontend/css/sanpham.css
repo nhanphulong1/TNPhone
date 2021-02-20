@@ -5,20 +5,6 @@
     vertical-align: top;
 }
 
-.tieudesp{
-    background-color: #484018;
-    background-image: url('/shared/bg_tieudesp.jpg');
-    background-size: cover;
-    border-radius: 5px;
-    margin: 20px 0px;
-    text-align: center;
-    color: yellow;
-    font-weight: bold;
-    text-justify: auto;
-    font-size: 28px;
-    padding: 3px;
-}
-
 .card{
     margin: 18px 10px;
     border: none;

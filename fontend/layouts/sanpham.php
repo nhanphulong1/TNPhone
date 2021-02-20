@@ -6,7 +6,7 @@
         include_once(__DIR__.'/../head.php');
     ?>
     <link rel="stylesheet" type="text/css" href="../../../assets/frontend/css/sidebar.css">
-    <link rel="stylesheet" type="text/css" href="../../../assets/frontend/css/index.css">
+    <link rel="stylesheet" type="text/css" href="../../../assets/frontend/css/sanpham.css">
 </head>
 <body>
     <?php 
@@ -94,7 +94,7 @@ EOT;
                             <h5 class="card-title"><?= $sp['sp_ten']?></h5>
                             <p class="card-text"><?= number_format($sp['sp_gia'],0,".",",")." VNĐ"?></p>
                         </a>
-                        <a href="#" class="btn btn-warning">Mua hàng</a>
+                        <a href="/fontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>" class="btn btn-warning">Mua hàng</a>
                     </div>
                 </div>
                 <?php endforeach; ?>

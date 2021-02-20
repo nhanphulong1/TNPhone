@@ -18,19 +18,42 @@
         include_once(__DIR__.'/../dbconnect.php');
         //câu lệnh select
         $sql= <<<EOT
-        SELECT sp.sp_ma, sp_ten, sp_gia,
-            hsp_tentaptin
-        FROM sanpham sp left JOIN hinhsanpham hsp
-        ON sp.sp_ma = hsp.sp_ma
-        JOIN nhasanxuat nsx ON sp.nsx_ma=nsx.nsx_ma
-        WHERE nsx_ten LIKE '%$nsx%'
-        GROUP BY sp.sp_ma
+        SELECT sp.sp_ma, sp_ten, sp_gia,hsp_tentaptin
+            FROM sanpham sp left JOIN hinhsanpham hsp
+            ON sp.sp_ma = hsp.sp_ma
+            WHERE sp_ten LIKE '%%'
+            GROUP BY sp.sp_ma
+            ORDER BY sp.sp_ngaycapnhat desc
+            LIMIT 5
 EOT;
         // Câu lệnh thực thi
         $result = mysqli_query($conn,$sql);
         $ds_sanpham=[];
         while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
             $ds_sanpham[] = array(
+                'sp_ma' => $row['sp_ma'],
+                'sp_ten' => $row['sp_ten'],
+                'sp_gia' => $row['sp_gia'],
+                'hsp_tentaptin' => $row['hsp_tentaptin']
+            );
+        }
+
+
+        $sqlSanPhamNhieu= <<<EOT
+        SELECT sp.sp_ma, sp_ten, sp_gia,hsp_tentaptin,sp_ngaycapnhat,ifnull(SUM(ct.ctdh_soluong),0) soluongdaban
+            FROM sanpham sp left JOIN hinhsanpham hsp
+            ON sp.sp_ma = hsp.sp_ma
+            left JOIN chitietdathang ct ON ct.sp_ma = sp.sp_ma
+            WHERE sp_ten LIKE '%%'
+            GROUP BY sp.sp_ma
+            ORDER BY soluongdaban desc
+            LIMIT 5
+EOT;
+        // Câu lệnh thực thi
+        $result_SPNhieu = mysqli_query($conn,$sqlSanPhamNhieu);
+        $ds_sanphamnhieu=[];
+        while($row = mysqli_fetch_array($result_SPNhieu,MYSQLI_ASSOC)){
+            $ds_sanphamnhieu[] = array(
                 'sp_ma' => $row['sp_ma'],
                 'sp_ten' => $row['sp_ten'],
                 'sp_gia' => $row['sp_gia'],
@@ -74,25 +97,52 @@ EOT;
         </div>
 
         <div class="row">
-            <!-- Hiển thị sản phẩm -->
+            <!-- Hiển thị sản phẩm mới nhất -->
             <div class="col-md-12" id="contain">
-                <?php if(!empty($ds_sanpham)): ?>
-                <?php foreach($ds_sanpham as $sp):?>
-                <div class="card" style="width: 8rem; display: inline-block;">
-                    <a href="/fontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>"><img src="../../shared/<?= ($sp['hsp_tentaptin']=="") ? 'default-image.jpg':$sp['hsp_tentaptin'] ?>" class="card-img-top"></a>
-                    <div class="card-body">
-                        <a href="/fontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>">
-                            <h5 class="card-title"><?= $sp['sp_ten']?></h5>
-                            <p class="card-text"><?= number_format($sp['sp_gia'],0,".",",")." VNĐ"?></p>
-                        </a>
-                        <a href="#" class="btn btn-warning">Mua hàng</a>
+                <h4 class="tieudesp">Các Sản Phẩm Nổi Bật</h4>
+                <div>
+                    <?php if(!empty($ds_sanpham)): ?>
+                    <?php foreach($ds_sanpham as $sp):?>
+                    <div class="card" style="width: 17%; display: inline-block;">
+                        <a href="/fontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>"><img src="../../shared/<?= ($sp['hsp_tentaptin']=="") ? 'default-image.jpg':$sp['hsp_tentaptin'] ?>" class="card-img-top"></a>
+                        <div class="card-body">
+                            <a href="/fontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>">
+                                <h5 class="card-title"><?= $sp['sp_ten']?></h5>
+                                <p class="card-text"><?= number_format($sp['sp_gia'],0,".",",")." VNĐ"?></p>
+                            </a>
+                            <a href="/fontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>" class="btn btn-warning">Mua hàng</a>
+                        </div>
                     </div>
+                    <?php endforeach; ?>
+                    <?php else: ?>
+                        <div id="tb_khong"><p>Không có sản phẩm này.</p></div>
+                    <?php endif; ?>
                 </div>
-                <?php endforeach; ?>
-                <?php else: ?>
-                    <div id="tb_khong"><p>Không có sản phẩm này.</p></div>
-                <?php endif; ?>
+                <!-- Cách dòng -->
+                <hr id="space">
+                <!-- Các sản phẩm bán nhiều nhất -->
+                <h4 class="tieudesp">Các Sản Phẩm Bán Chạy</h4>
+                <div>
+                    <?php if(!empty($ds_sanphamnhieu)): ?>
+                    <?php foreach($ds_sanphamnhieu as $sp):?>
+                    <div class="card" style="width: 17%; display: inline-block;">
+                        <a href="/fontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>"><img src="../../shared/<?= ($sp['hsp_tentaptin']=="") ? 'default-image.jpg':$sp['hsp_tentaptin'] ?>" class="card-img-top"></a>
+                        <div class="card-body">
+                            <a href="/fontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>">
+                                <h5 class="card-title"><?= $sp['sp_ten']?></h5>
+                                <p class="card-text"><?= number_format($sp['sp_gia'],0,".",",")." VNĐ"?></p>
+                            </a>
+                            <a href="/fontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>" class="btn btn-warning">Mua hàng</a>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                    <?php else: ?>
+                        <div id="tb_khong"><p>Không có sản phẩm này.</p></div>
+                    <?php endif; ?>
+                </div>
             </div>
+
+
         </div>
     </div>
     <!-- Footer -->
