@@ -7,19 +7,19 @@
 // Tùy theo đường dẫn URL, set giá trị Tên trang và Tiêu đề phù hợp
 switch ($_SERVER['SCRIPT_NAME']) {
     // CRUD Danh mục Loại sản phẩm
-  case "/TNPhone/fontend/index.php":
+  case "/TNPhone/frontend/index.php":
     $CURRENT_PAGE = "fontend.index";
     $PAGE_TITLE = "Trang chủ TNPhone";
     break;
-  case "/TNPhone/fontend/layouts/lienhe.php":
+  case "/TNPhone/frontend/layouts/lienhe.php":
     $CURRENT_PAGE = "fontend.lienhe";
     $PAGE_TITLE = "Liên Hệ TNPhone";
     break;
-  case "/TNPhone/fontend/layouts/gioithieu.php":
+  case "/TNPhone/frontend/layouts/gioithieu.php":
     $CURRENT_PAGE = "fontend.gioithieu";
     $PAGE_TITLE = "Giới thiệu về TNPhone";
     break;
-  case "/TNPhone/fontend/layouts/giohang.php":
+  case "/TNPhone/frontend/layouts/giohang.php":
     $CURRENT_PAGE = "fontend.giohang";
     $PAGE_TITLE = "Giỏ hàng";
     break;

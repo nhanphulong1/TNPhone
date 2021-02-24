@@ -88,13 +88,13 @@ EOT;
                 <?php if(!empty($ds_sanpham)): ?>
                 <?php foreach($ds_sanpham as $sp):?>
                 <div class="card" style="width: 22%; display: inline-block;">
-                    <a href="/fontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>"><img src="../../../shared/<?= ($sp['hsp_tentaptin']=="") ? 'default-image.jpg':$sp['hsp_tentaptin'] ?>" class="card-img-top"></a>
+                    <a href="/TNPhone/frontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>"><img src="../../../shared/<?= ($sp['hsp_tentaptin']=="") ? 'default-image.jpg':$sp['hsp_tentaptin'] ?>" class="card-img-top"></a>
                     <div class="card-body">
-                        <a href="/fontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>">
+                        <a href="/TNPhone/frontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>">
                             <h5 class="card-title"><?= $sp['sp_ten']?></h5>
                             <p class="card-text"><?= number_format($sp['sp_gia'],0,".",",")." VNĐ"?></p>
                         </a>
-                        <a href="/fontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>" class="btn btn-warning">Mua hàng</a>
+                        <a href="/TNPhone/frontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>" class="btn btn-warning">Mua hàng</a>
                     </div>
                 </div>
                 <?php endforeach; ?>

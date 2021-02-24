@@ -24,7 +24,7 @@
         }
     ?>
     <div class="container">
-        <div id="logoDN"><a href="/fontend/"><img src="/shared/logo.png" alt="Logo"></a></div>
+        <div id="logoDN"><a href="/TNPhone/frontend/"><img src="/shared/logo.png" alt="Logo"></a></div>
         <hr>
         <div id="DangNhap">
             <form name="frmDangNhap" id="frmDangNhap" action="" method="post">
@@ -64,7 +64,7 @@
                 $kh_hoten = $row['kh_hoten'];
                 setcookie("kh_tendangnhap",$kh_tendangnhap,time()+320,"/");
                 setcookie("kh_hoten",$kh_hoten,time()+320,"/");
-                echo "<script>location.href='/fontend/';</script>";
+                echo "<script>location.href='/TNPhone/frontend/';</script>";
                 if(isset($_POST['chk_ghinho'])){
                     setcookie("user",$kh_tendangnhap,time()+(68400*2),"/");
                     setcookie("pass",$kh_matkhau,time()+(68400*2),"/");

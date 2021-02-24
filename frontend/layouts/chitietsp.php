@@ -18,7 +18,7 @@ if (session_id() === '') {
     <!-- Nhúng file Quản lý các Liên kết CSS dùng chung cho toàn bộ trang web -->
     <?php include_once(__DIR__ . '/../styles.php'); ?>
 
-    <!-- <link href="/php/myhand/assets/frontend/css/style.css" type="text/css" rel="stylesheet" /> -->
+    <!-- <link href="/php/myhand/assets/TNPhone/frontend/css/style.css" type="text/css" rel="stylesheet" /> -->
 
     <style>
         body {
@@ -463,16 +463,16 @@ EOT;
             };
             // console.log((dulieugoi));
 
-            // Gọi AJAX đến API ở URL `/php/myhand/frontend/api/giohang-themsanpham.php`
+            // Gọi AJAX đến API ở URL `/php/myhand/TNPhone/frontend/api/giohang-themsanpham.php`
             $.ajax({
-                url: '/fontend/api/giohang-themsanpham.php',
+                url: '/TNPhone/frontend/api/giohang-themsanpham.php',
                 method: "POST",
                 dataType: 'json',
                 data: dulieugoi,
                 success: function(data) {
                     console.log(data);
                     var htmlString =
-                        `Sản phẩm đã được thêm vào Giỏ hàng. <a href="/fontend/thanhtoan/giohang.php">Xem Giỏ hàng</a>.`;
+                        `Sản phẩm đã được thêm vào Giỏ hàng. <a href="/TNPhone/frontend/thanhtoan/giohang.php">Xem Giỏ hàng</a>.`;
                     $('#thongbao').html(htmlString);
                     // Hiện thông báo
                     $('.alert').removeClass('d-none').addClass('show');

@@ -22,7 +22,7 @@ if (session_id() === '') {
 
 // Đã người dùng chưa đăng nhập -> hiển thị thông báo yêu cầu người dùng đăng nhập
 if (!isset($_COOKIE['kh_tendangnhap']) || empty($_COOKIE['kh_tendangnhap'])) {
-    echo 'Vui lòng Đăng nhập trước khi Thanh toán! <a href="/fontend/layouts/dangnhap.php">Click vào đây để đến trang Đăng nhập</a>';
+    echo 'Vui lòng Đăng nhập trước khi Thanh toán! <a href="/TNPhone/frontend/layouts/dangnhap.php">Click vào đây để đến trang Đăng nhập</a>';
     die;
 } else {
     // Nếu giỏ hàng trong session rỗng, return
@@ -206,5 +206,5 @@ EOT;
     // 5. Thực thi hoàn tất, điều hướng về trang Danh sách
     // Hủy dữ liệu giỏ hàng trong session
     unset($_SESSION['giohangdata']);
-    echo 'Đặt hàng thành công. <a href="/fontend/">Bấm vào đây để quay về trang chủ</a>';
+    echo 'Đặt hàng thành công. <a href="/TNPhone/frontend/">Bấm vào đây để quay về trang chủ</a>';
 }

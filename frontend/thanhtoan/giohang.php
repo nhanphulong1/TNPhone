@@ -105,9 +105,9 @@ if (session_id() === '') {
                     <?php else : ?>
                         <h2>Giỏ hàng rỗng!!!</h2>
                     <?php endif; ?>
-                    <a href="/fontend" class="btn btn-warning btn-md"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay
+                    <a href="/TNPhone/frontend" class="btn btn-warning btn-md"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay
                         về trang chủ</a>
-                    <a href="/fontend/thanhtoan/thanhtoan.php" class="btn btn-primary btn-md"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Thanh toán</a>
+                    <a href="/TNPhone/frontend/thanhtoan/thanhtoan.php" class="btn btn-primary btn-md"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Thanh toán</a>
                 </div>
             </div>
         </div>
@@ -133,7 +133,7 @@ if (session_id() === '') {
 
                 // AJAX đến API xóa sản phẩm khỏi Giỏ hàng trong Session
                 $.ajax({
-                    url: '/fontend/api/giohang-xoasanpham.php',
+                    url: '/TNPhone/frontend/api/giohang-xoasanpham.php',
                     method: "POST",
                     dataType: 'json',
                     data: dulieugoi,
@@ -170,7 +170,7 @@ if (session_id() === '') {
                 };
 
                 $.ajax({
-                    url: '/fontend/api/giohang-capnhatsanpham.php',
+                    url: '/TNPhone/frontend/api/giohang-capnhatsanpham.php',
                     method: "POST",
                     dataType: 'json',
                     data: dulieugoi,
