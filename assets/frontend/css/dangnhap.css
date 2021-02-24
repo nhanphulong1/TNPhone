@@ -1,0 +1,86 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    background-color: lightgray;
+}
+
+hr{
+    position: relative;
+    top: -25px;
+    margin: 2px;
+}
+
+.container{
+    background-color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 40%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+    text-align: center;
+}
+
+#logoDN{
+    text-align: center;
+    margin-top: 12px;
+}
+
+#logoDN img{
+    width: 200px;
+    border-radius: 50%;
+}
+
+#frmDangNhap h4{
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+    color: red;
+    text-shadow: 1px 1px 4px;
+    margin-bottom: 35px;
+}
+
+.form-group{
+    width: 80%;
+    margin: 4px auto;
+}
+
+.form-group label{
+    display: inline-block;
+    width: 30%;
+    text-align: right;
+}
+
+.form-group input{
+    border-radius: 5px;
+    border: blue 1px solid;
+}
+
+#ghinho{
+    text-align: center;
+    /* padding-left: 100px; */
+}
+
+#ghinho label{
+    width: auto;
+    font-size: 18px;
+}
+
+#dangky{
+    margin: 20px 2px 30px 2px;
+    display: block;
+    font-size: 20px;
+}
+
+#thongbao{
+    font-size: 18px;
+    width: 70%;
+    border-radius: 7px;
+    margin: auto;
+    margin-bottom: 10px;
+    margin-top: -20px;
+    padding: 2px;
+}

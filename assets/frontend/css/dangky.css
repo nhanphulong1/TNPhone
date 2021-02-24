@@ -1,0 +1,65 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    background-color: lightgray;
+}
+
+hr{
+    position: relative;
+    top: -25px;
+    margin: 2px;
+}
+
+.container{
+    background-color: white;
+    width: 40%;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#logoDN{
+    text-align: center;
+    margin-top: 12px;
+}
+
+#logoDN img{
+    width: 200px;
+    border-radius: 50%;
+}
+
+#frmDangKy h4{
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+    color: red;
+    text-shadow: 1px 1px 4px;
+    margin-bottom: 35px;
+}
+
+#frmDangKy .thongbao{
+    font-size: 18px;
+    padding: 2px 10px;
+}
+
+#frmDangKy button{
+    margin-bottom: 10px;
+}
+
+.form-group{
+    width: 80%;
+    margin: 20px auto;
+}
+
+.form-group label{
+    display: inline-block;
+}
+
+.form-group input{
+    border-radius: 5px;
+    border: blue 1px solid;
+}
+

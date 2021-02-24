@@ -1,0 +1,231 @@
+/* Lưu file */
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 22px;
+}
+
+/* Header */
+
+#header{
+    background: rgb(243, 243, 9);
+    /* background-size: cover; */
+    color: black;
+    background: url('/shared/bg_header_fe.jpg');
+    background-size: 100%;
+}
+
+#tieudelogo{
+    width: 70%;
+    margin: 0 auto;
+}
+
+    /* Logo */
+    #logo{
+        height: 45px;
+        margin: 0px;
+    }
+
+    #logo img{
+        width: 42px;
+        border-radius: 50%;
+        margin-bottom: 8px;
+        margin-right: 10px;
+        margin-left: 2px;
+    }
+    
+    #logo a{
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 800;
+        font-size: 32px;
+        line-height: 45px;
+        letter-spacing: 2px;
+        color: black;
+    }
+
+    #logo a span{
+        color: red;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 900;
+        font-size: 30px;
+    }
+
+    #logo a:hover{
+        text-decoration: none;
+    }
+    /* End Logo */
+
+    /* Search */
+    #search{
+        padding-top: 2px;
+    }
+
+    #search div{
+        width: 95%;
+        position: relative;
+        display: flex;
+    }
+
+    #search input{
+        width: 100%;
+        border: 1px solid lightgray;
+        border-right: none;
+        padding: 5px;
+        height: 40px;
+        border-radius: 5px 0 0 5px;
+        outline: none;
+        color: #9DBFAF;
+    }
+
+    #search input:focus{
+        color: black;
+    }
+
+    #search input:focus ~ #search-ajax{
+        display: block;
+    }
+/* 
+    #search:hover #search-ajax{
+        display: block;
+    } */
+
+    #search .searchbtn{
+        width: 40px;
+        height: 40px;
+        border: 1px solid #00B4CC;
+        background: #00B4CC;
+        text-align: center;
+        color: #fff;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        font-size: 20px;
+    }
+
+    #search-ajax{
+        display: none;
+        position: absolute;
+        z-index: 99;
+        background-color: white;
+        width: 100%;
+        top: 45px;
+        /* border-radius: 5px; */
+    }
+
+    #search-ajax:hover{
+        display: block;
+    }
+
+    #search-ajax li{
+        border: 1px solid lightgray;
+        list-style-type: none;
+    }
+
+    #search-ajax li:hover{
+        background-color: lightgray;
+    }
+
+    #search-ajax li a{
+        display: block;
+        color: black;
+        padding: 4px 5px;
+        text-decoration: none;
+        overflow: hidden;
+    }
+
+    #search-ajax li a h6{
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 0px;
+    }
+
+    #search-ajax li a .giasp{
+        color: red;
+        font-size: 16px;
+    }
+
+    #search-ajax li a img{
+        height: 50px;
+        margin-right: 5px;
+        float: left;
+    }
+
+    /* End Search */
+
+
+    /* Tài khoản */
+    /* #taikhoan{ */
+        /* padding-right: 40px; */
+    /* } */
+
+    #cartbutton{
+        padding: 1px;
+        margin-right: 10px;
+    }
+
+    #taikhoan a{
+        text-decoration: none;
+        /* margin: 3px 10px; */
+        padding: 4px 10px;
+        color: black;
+        display: inline-block;
+        font-size: 22px;
+    }
+
+    #avatar-img{
+        border-radius: 50%;
+        height: 32px;
+    }
+    
+    #account{
+        display: inline-block;
+        /* background-color: lightgrey;
+        border-radius: 10px; */
+    }
+
+    #account label{
+        font-size: 18px;
+    }
+
+    #account a{
+        font-size: 20px;
+        font-weight: bold;
+        padding: 5px 15px 5px 5px;
+    }
+
+    
+    /* End Tài khoản */
+
+#menu{
+    /* border: 1px solid green; */
+    min-height: 25px;
+    
+}
+/* End Header */
+
+/* Menu */
+#menu{
+    background: black;
+
+}
+
+.row .col{
+    text-align: center;
+}
+
+#menu a{
+    color: white;
+    display: block;
+    padding: 3px;
+    text-decoration: none;
+}
+
+#menu a:hover{
+    background-color: lightgrey;
+    color: black;
+}
+/* End Menu */
+
+.container{
+    padding: 0px;
+}
