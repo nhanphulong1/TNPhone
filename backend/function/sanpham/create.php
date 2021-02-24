@@ -70,8 +70,10 @@ EOT;
             <div class="col-md-9">
                 <!-- content -->
                 <div class="text-center">
+                    <br>
                     <h1>THÊM MỚI SẢN PHẨM</h1>
                     <hr>
+                    <br>
                 </div>
                 <form name="frmThemMoiSP" action="" method="post">
                     <div class="row">

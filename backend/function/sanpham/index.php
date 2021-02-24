@@ -22,7 +22,10 @@
             <div class="col">
                 <!-- content -->
                 <div class="text-center">
+                    <br>
                     <h1>DANH SÁCH SẢN PHẨM</h1>
+                    <hr>
+                    <br>
                 </div>
 
                 <?php
@@ -130,6 +133,7 @@ EOT;
     </div>
 
     <!-- footer -->
+    <br>
     <?php include_once(__DIR__ . '/../../layouts/partials/footer.php'); ?>
     <!-- endfooter -->
 
