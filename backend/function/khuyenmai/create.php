@@ -40,7 +40,6 @@
                     <div class="row">
                         <div class="form-group col-md-4">
                             <label>Giảm giá: 0~70% </label><br>
-                            <input type="text" name="km_discount" class="form-control" placeholder="Phần trăm khuyến mãi">
                             <input type="number" name="km_discount" class="form-control" placeholder="Phần trăm khuyến mãi">
                         </div>
                         <div class="form-group col-md-4">
