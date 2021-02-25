@@ -117,7 +117,7 @@ EOT;
         });
 
         function confirmDelete(km_ma) {
-            var result = confirm("Xóa sản phẩm này?");
+            var result = confirm("Xóa dòng này?");
             var url = 'delete.php?km_ma=' + km_ma;
             if (result == true) {
 

@@ -8,6 +8,6 @@ $sqlDelete = "DELETE FROM khuyenmai WHERE km_ma= $km_ma";
 
 // Thực thi
 $result = mysqli_query($conn,$sqlDelete);
-echo '<script>location.href = "index.php"; alert("Đã xóa sản phẩm");</script>';
+echo '<script>location.href = "index.php"; alert("Đã xóa thành công");</script>';
 //
 ?>
