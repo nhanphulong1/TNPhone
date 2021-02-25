@@ -91,6 +91,148 @@ EOT;
         $km_batdau = $_POST['km_batdau'];
         $km_ketthuc = $_POST['km_ketthuc'];
 
+
+        // Tạo biến lỗi để chứa thông báo lỗi
+        $errors = [];
+
+        // Validate khuyen mai
+        // Required
+        if (empty($km_ten)) {
+            $errors['km_ten'][] = [
+                'rule' => 'required',
+                'rule_value' => true,
+                'value' => $km_ten,
+                'msg' => 'Vui lòng nhập tên khuyến mãi'
+            ];
+        }
+
+        // Minlength 10
+        if (!empty($km_ten) && strlen($km_ten) < 10) {
+            $errors['km_ten'][] = [
+                'rule' => 'minlength',
+                'rule_value' => 10,
+                'value' => $km_ten,
+                'msg' => 'Tên khuyến mãi phải có ít nhất 10 ký tự'
+            ];
+        }
+        // Maxlength 255
+        if (!empty($km_ten) && strlen($km_ten) > 255) {
+            $errors['km_ten'][] = [
+                'rule' => 'maxlength',
+                'rule_value' => 255,
+                'value' => $km_ten,
+                'msg' => 'Tên Loại sản phẩm không được vượt quá 255 ký tự'
+            ];
+        }
+
+        // Validate nội dung khuyến mãi
+        // Required
+        if (empty($km_noidung)) {
+            $errors['km_noidung'][] = [
+                'rule' => 'required',
+                'rule_value' => true,
+                'value' => $km_noidung,
+                'msg' => 'Vui lòng nhập nội dung khuyến mãi'
+            ];
+        }
+
+        // Minlength 10
+        if (!empty($km_noidung) && strlen($km_noidung) < 10) {
+            $errors['km_noidung'][] = [
+                'rule' => 'minlength',
+                'rule_value' => 10,
+                'value' => $lsp_mota,
+                'msg' => 'Nội dung khuyến mãi phải có ít nhất 10 ký tự'
+            ];
+        }
+
+        // Maxlength 1000
+        if (!empty($km_noidung) && strlen($km_noidung) > 1000) {
+            $errors['km_noidung'][] = [
+                'rule' => 'maxlength',
+                'rule_value' => 1000,
+                'value' => $km_noidung,
+                'msg' => 'Nội dung khuyến mãi không được vượt quá 1000 ký tự'
+            ];
+        }
+
+        // Validate phần trăm khuyến mãi
+        // Maxlength 2
+        if (!empty($km_discount) && strlen($km_discount) > 2) {
+            $errors['km_discount'][] = [
+                'rule' => 'maxlength',
+                'rule_value' => 2,
+                'value' => $km_discount,
+                'msg' => 'Phần trăm khuyến mãi không được quá 70%'
+            ];
+        }
+
+        // Maxvalue 70
+        if (!empty($km_discount) && $km_discount > 70) {
+            $errors['km_discount'][] = [
+                'rule' => 'maxvalue',
+                'rule_value' => 70,
+                'value' => $km_discount,
+                'msg' => 'Phần trăm khuyến mãi không được quá 70%'
+            ];
+        }
+
+        // Validate ngày bắt đầu và ngày kết thúc
+        // Require
+        if (empty($km_batdau)) {
+            $errors['km_batdau'][] = [
+                'rule' => 'required',
+                'rule_value' => true,
+                'value' => $km_batdau,
+                'msg' => 'Vui lòng chọn ngày bắt đầu khuyến mãi'
+            ];
+        }
+
+        // Validate ngày kết thúc
+        if (empty($km_ketthuc)) {
+            $errors['km_ketthuc'][] = [
+                'rule' => 'required',
+                'rule_value' => true,
+                'value' => $km_ketthuc,
+                'msg' => 'Vui lòng chọn ngày kết thúc khuyến mãi'
+            ];
+        }
+
+        if (!empty($km_ketthuc) && !empty($km_batdau)  && $km_ketthuc < $km_batdau) {
+            $errors['km_ketthuc'][] = [
+                'rule' => 'sosanh',
+                'rule_value' => true,
+                'value' => $km_ketthuc,
+                'msg' => 'Ngày kết thúc không được nhỏ hơn ngày bắt đầu'
+            ];
+        }
+    }
+    ?>
+
+    <?php if (
+        isset($_POST['btnSave'])  // Nếu người dùng có bấm nút "Lưu dữ liệu"
+        && isset($errors)         // Nếu biến $errors có tồn tại
+        && (!empty($errors))      // Nếu giá trị của biến $errors không rỗng
+    ) : ?>
+        <div id="errors-container" class="alert alert-danger face my-2" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <ul>
+                <?php foreach ($errors as $fields) : ?>
+                    <?php foreach ($fields as $field) : ?>
+                        <li><?php echo $field['msg']; ?></li>
+                    <?php endforeach; ?>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    <?php endif; ?>
+
+    <?php
+    if (
+        isset($_POST['btnSave'])  // Nếu người dùng có bấm nút "Lưu dữ liệu"
+        && (!isset($errors) || (empty($errors))) // Nếu biến $errors không tồn tại Hoặc giá trị của biến $errors rỗng
+    ) {
         // 2.Chuẩn bị câu truy vấn sql
         $updateKhuyenMai = <<<EOT
         UPDATE khuyenmai

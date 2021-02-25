@@ -57,7 +57,7 @@
                             <button name="btnSave" class="btn btn-primary">Lưu khuyến mãi</button>
                         </div>
                         <div class="col-md-6">
-                            <button type="reset" class="btn btn-secondary">Nhập lại</button>
+                            <a href="index.php" class="btn btn-secondary">Hủy</a>
                         </div>
                     </div>
                 </form>
@@ -107,7 +107,7 @@
                 'rule' => 'maxlength',
                 'rule_value' => 255,
                 'value' => $km_ten,
-                'msg' => 'Tên Loại sản phẩm không được vượt quá 255 ký tự'
+                'msg' => 'Tên khuyến mãi không được vượt quá 255 ký tự'
             ];
         }
 
@@ -227,7 +227,7 @@
 EOT;
         // 3.Thực thi câu lệnh
         $resultInserKhuyenMai = mysqli_query($conn, $insertKhuyenMai);
-        echo '<script>location.href ="index.php";</script>';
+        echo '<script>location.href ="index.php"; alert("Thêm thành công");</script>';
     }
     ?>
     <br>
