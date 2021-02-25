@@ -5,8 +5,8 @@
         include_once(__DIR__.'/../config.php');
         include_once(__DIR__.'/../head.php');
     ?>
-    <link rel="stylesheet" type="text/css" href="../../../assets/frontend/css/sidebar.css">
-    <link rel="stylesheet" type="text/css" href="../../../assets/frontend/css/sanpham.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/frontend/css/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/frontend/css/sanpham.css">
 </head>
 <body>
     <?php 
@@ -58,13 +58,13 @@ EOT;
             </ol>
             <div class="carousel-inner">
                     <div class="carousel-item active">
-                    <img src="../../../shared/anh-nen-1.png" class="d-block w-100" alt="abc">
+                    <img src="../../shared/anh-nen-1.png" class="d-block w-100" alt="abc">
                     </div>
                     <div class="carousel-item">
-                    <img src="../../../shared/anh-nen-2.png" class="d-block w-100" alt="...">
+                    <img src="../../shared/anh-nen-2.png" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                    <img src="../../../shared/anh-nen-2.png" class="d-block w-100" alt="...">
+                    <img src="../../shared/anh-nen-2.png" class="d-block w-100" alt="...">
                     </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -88,7 +88,7 @@ EOT;
                 <?php if(!empty($ds_sanpham)): ?>
                 <?php foreach($ds_sanpham as $sp):?>
                 <div class="card" style="width: 22%; display: inline-block;">
-                    <a href="/TNPhone/frontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>"><img src="../../../shared/<?= ($sp['hsp_tentaptin']=="") ? 'default-image.jpg':$sp['hsp_tentaptin'] ?>" class="card-img-top"></a>
+                    <a href="/TNPhone/frontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>"><img src="../../shared/<?= ($sp['hsp_tentaptin']=="") ? 'default-image.jpg':$sp['hsp_tentaptin'] ?>" class="card-img-top"></a>
                     <div class="card-body">
                         <a href="/TNPhone/frontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>">
                             <h5 class="card-title"><?= $sp['sp_ten']?></h5>

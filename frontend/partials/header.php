@@ -2,8 +2,8 @@
     <div id="tieudelogo">
         <div  class="row">
             <div class="col-md-3" id="logo">
-                <a href="/TNPhone/frontend/index.php">
-                    <img src="/shared/logo.png" alt="Logo TNPhone"><span>TN</span>PHONE
+                <a href="/TNPhone/index.php">
+                    <img src="/TNPhone/shared/logo.png" alt="Logo TNPhone"><span>TN</span>PHONE
                 </a>
             </div>
             <div id="search" class="col-md-4">
@@ -26,7 +26,7 @@
                         <a href="/TNPhone/frontend/layouts/dangnhap.php">Đăng nhập</a>
                         <a href="/TNPhone/frontend/layouts/dangky.php">Đăng ký</a>
                     <?php else: ?>
-                        <img src="/shared/default-avatar.jpg" alt="Avatar" id="avatar-img">
+                        <img src="/TNPhone/shared/default-avatar.jpg" alt="Avatar" id="avatar-img">
                         <label><?=$_COOKIE['kh_hoten'] ?></label>
                         <a href="/TNPhone/frontend/layouts/dangxuat.php">Đăng xuất</a>
                     <?php endif; ?>
@@ -39,7 +39,7 @@
     <div class="container">
 		<div class="row">
 			<div class="col">
-				<a href="/TNPhone/frontend/index.php">Trang chủ</a>
+				<a href="/TNPhone/index.php">Trang chủ</a>
 			</div>
 			<div class="col">
 				<a href="/TNPhone/frontend/layouts/sanpham.php">Sản phẩm</a>

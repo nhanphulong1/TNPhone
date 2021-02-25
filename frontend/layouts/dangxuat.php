@@ -3,5 +3,5 @@
         setcookie('kh_tendangnhap','',time()-320,"/");
         unset($_COOKIE['kh_tendangnhap']);
     }
-    header("Location: /TNPhone/frontend")
+    header("Location: /TNPhone")
 ?>

@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <?php 
-        include_once(__DIR__.'/config.php');
-        include_once(__DIR__.'/head.php');
+        include_once(__DIR__.'/frontend/config.php');
+        include_once(__DIR__.'/frontend/head.php');
     ?>
-    <link rel="stylesheet" type="text/css" href="../../assets/frontend/css/sidebar.css">
-    <link rel="stylesheet" type="text/css" href="../../assets/frontend/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/TNPhone/assets/frontend/css/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="/TNPhone/assets/frontend/css/index.css">
 </head>
 <body>
     <?php 
@@ -15,7 +15,7 @@
             $nsx=$_GET['nsx'];
         
         // Kết nối csdl.
-        include_once(__DIR__.'/../dbconnect.php');
+        include_once(__DIR__.'/dbconnect.php');
         //câu lệnh select
         $sql= <<<EOT
         SELECT sp.sp_ma, sp_ten, sp_gia,hsp_tentaptin
@@ -65,7 +65,7 @@ EOT;
 
 
     <!-- Header -->
-    <?php include_once(__DIR__.'/partials/header.php') ?>
+    <?php include_once(__DIR__.'/frontend/partials/header.php') ?>
 
     <div class="container">
         <!-- /* Ảnh quảng cáo */ -->
@@ -77,13 +77,13 @@ EOT;
             </ol>
             <div class="carousel-inner">
                     <div class="carousel-item active">
-                    <img src="../../shared/anh-nen-1.png" class="d-block w-100" alt="abc">
+                    <img src="./shared/anh-nen-1.png" class="d-block w-100" alt="abc">
                     </div>
                     <div class="carousel-item">
-                    <img src="../../shared/anh-nen-2.png" class="d-block w-100" alt="...">
+                    <img src="./shared/anh-nen-2.png" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                    <img src="../../shared/anh-nen-2.png" class="d-block w-100" alt="...">
+                    <img src="./shared/anh-nen-2.png" class="d-block w-100" alt="...">
                     </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -104,7 +104,7 @@ EOT;
                     <?php if(!empty($ds_sanpham)): ?>
                     <?php foreach($ds_sanpham as $sp):?>
                     <div class="card" style="width: 17%; display: inline-block;">
-                        <a href="/TNPhone/frontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>"><img src="../../shared/<?= ($sp['hsp_tentaptin']=="") ? 'default-image.jpg':$sp['hsp_tentaptin'] ?>" class="card-img-top"></a>
+                        <a href="/TNPhone/frontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>"><img src="./shared/<?= ($sp['hsp_tentaptin']=="") ? 'default-image.jpg':$sp['hsp_tentaptin'] ?>" class="card-img-top"></a>
                         <div class="card-body">
                             <a href="/TNPhone/frontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>">
                                 <h5 class="card-title"><?= $sp['sp_ten']?></h5>
@@ -126,7 +126,7 @@ EOT;
                     <?php if(!empty($ds_sanphamnhieu)): ?>
                     <?php foreach($ds_sanphamnhieu as $sp):?>
                     <div class="card" style="width: 17%; display: inline-block;">
-                        <a href="/TNPhone/frontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>"><img src="../../shared/<?= ($sp['hsp_tentaptin']=="") ? 'default-image.jpg':$sp['hsp_tentaptin'] ?>" class="card-img-top"></a>
+                        <a href="/TNPhone/frontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>"><img src="./shared/<?= ($sp['hsp_tentaptin']=="") ? 'default-image.jpg':$sp['hsp_tentaptin'] ?>" class="card-img-top"></a>
                         <div class="card-body">
                             <a href="/TNPhone/frontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>">
                                 <h5 class="card-title"><?= $sp['sp_ten']?></h5>
@@ -146,8 +146,8 @@ EOT;
         </div>
     </div>
     <!-- Footer -->
-    <?php include_once(__DIR__.'/partials/footer.php') ?>
+    <?php include_once(__DIR__.'/frontend/partials/footer.php') ?>
     <!-- Scripts -->
-    <?php include_once(__DIR__.'/scripts.php') ?>
+    <?php include_once(__DIR__.'/frontend/scripts.php') ?>
 </body>
 </html>
