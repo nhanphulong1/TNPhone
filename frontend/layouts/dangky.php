@@ -12,7 +12,7 @@
         include_once(__DIR__.'/../../dbconnect.php');
     ?>
     <div class="container">
-        <div id="logoDN"><a href="/TNPhone/frontend/"><img src="/TNPhone/shared/logo.png" alt="Logo"></a></div>
+        <div id="logoDN"><a href="/TNPhone/"><img src="/TNPhone/shared/logo.png" alt="Logo"></a></div>
         <hr>
         <div id="DangKy">
             <form name="frmDangKy" id="frmDangKy" action="" method="post">

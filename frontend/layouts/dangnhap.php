@@ -24,7 +24,7 @@
         }
     ?>
     <div class="container">
-        <div id="logoDN"><a href="/TNPhone/frontend/"><img src="/TNPhone/shared/logo.png" alt="Logo"></a></div>
+        <div id="logoDN"><a href="/TNPhone/"><img src="/TNPhone/shared/logo.png" alt="Logo"></a></div>
         <hr>
         <div id="DangNhap">
             <form name="frmDangNhap" id="frmDangNhap" action="" method="post">
