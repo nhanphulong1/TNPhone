@@ -75,7 +75,7 @@ EOT;
                     <hr>
                     <br>
                 </div>
-                <form name="frmThemMoiSP" action="" method="post">
+                <form name="frmThemMoiSP" action="" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         <div class="form-group col-md-7">
                             <label>Tên sản phẩm: </label>
@@ -103,7 +103,7 @@ EOT;
                         </div>
                         <div class="col-md-7">
                             <label>Khuyến mãi: </label>
-                            <select name="nsx_ma" id="nsx_ma" class="form-control">
+                            <select name="km_ma" id="km_ma" class="form-control">
                                 <option value="">-- Không áp dụng khuyến mãi --</option>
                                 <?php foreach ($dsKM as $km) : ?>
                                     <option value="<?= $km['km_ma']; ?>"><?= $km['km_ten']; ?> - <?= $km['km_noidung']; ?></option>
@@ -149,8 +149,8 @@ EOT;
         $sp_gia = $_POST['sp_gia'];
         $sp_soluong = $_POST['sp_soluong'];
         $nsx_ma = $_POST['nsx_ma'];
-        $km_ma = $_POST['km_ma'];
-        $sp_hinhdaidien = $_POST['sp_hinhdaidien'];
+        $km_ma = (empty($_POST['km_ma']) ? 'NULL' : $_POST['km_ma']);
+        $sp_mota = $_POST['sp_mota'];
 
         // Kiểm tra ràng buộc dữ liệu (Validation)
         // Tạo biến lỗi để chứa thông báo lỗi
@@ -255,15 +255,7 @@ EOT;
                 'msg' => 'Vui lòng chọn nhà sản xuất'
             ];
         }
-        // Validate hình đại diện sản phẩm
-        if (empty($sp_hinhdaidien)) {
-            $errors['sp_hinhdaidien'][] = [
-                'rule' => 'required',
-                'rule_value' => true,
-                'value' => $sp_hinhdaidien,
-                'msg' => 'Vui lòng chọn hình đại diện cho sản phẩm'
-            ];
-        }
+
         // Validate mô tả sản phẩm
         // Required
         if (empty($sp_mota)) {
@@ -295,6 +287,49 @@ EOT;
         }
     }
     ?>
+    <?php if (
+        isset($_POST['btnSave'])  // Nếu người dùng có bấm nút "Lưu dữ liệu"
+        && isset($errors)         // Nếu biến $errors có tồn tại
+        && (!empty($errors))      // Nếu giá trị của biến $errors không rỗng
+    ) : ?>
+        <div id="errors-container" class="alert alert-danger face my-2" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <ul>
+                <?php foreach ($errors as $fields) : ?>
+                    <?php foreach ($fields as $field) : ?>
+                        <li><?php echo $field['msg']; ?></li>
+                    <?php endforeach; ?>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    <?php endif; ?>
+
+    <?php
+    if (
+        isset($_POST['btnSave'])  // Nếu người dùng có bấm nút "Lưu dữ liệu"
+        && (!isset($errors) || (empty($errors))) // Nếu biến $errors không tồn tại Hoặc giá trị của biến $errors rỗng
+    ) {
+
+        $upload_dir = __DIR__ . '/../../../assets/uploads/';
+        $subdir = 'product-avatars/';
+
+        $sp_hinhdaidien = $_FILES['sp_hinhdaidien']['name'];
+        $tentaptin = date('Ymd') . '_' . $sp_hinhdaidien;
+        move_uploaded_file($_FILES['sp_hinhdaidien']['tmp_name'], $upload_dir . $subdir . $tentaptin);
+
+
+        // 2.Chuẩn bị câu truy vấn sql
+        $insertSanPham = <<<EOT
+        INSERT INTO sanpham (sp_ten, sp_gia, sp_soluong, sp_mota, sp_hinhdaidien, nsx_ma, km_ma)
+        VALUES ('$sp_ten', $sp_gia, $sp_soluong, '$sp_mota', '$tentaptin', $nsx_ma, $km_ma)
+EOT;
+        // 3.Thực thi câu lệnh
+        $resultInsertSanPham = mysqli_query($conn, $insertSanPham);
+        echo '<script>location.href ="index.php"; alert("Thêm thành công");</script>';
+    }
+    ?>
 
     <!-- footer -->
     <br>
@@ -305,6 +340,21 @@ EOT;
 
     <!-- Nhúng file quản lý phần SCRIPT JAVASCRIPT -->
     <?php include_once(__DIR__ . '/../../layouts/scripts.php'); ?>
+
+    <!-- Phần script cho trang này -->
+    <script>
+        // Hiển thị ảnh preview (xem trước) khi người dùng chọn Ảnh
+        const reader = new FileReader();
+        const fileInput = document.getElementById("sp_hinhdaidien");
+        const img = document.getElementById("preview-img");
+        reader.onload = e => {
+            img.src = e.target.result;
+        }
+        fileInput.addEventListener('change', e => {
+            const f = e.target.files[0];
+            reader.readAsDataURL(f);
+        })
+    </script>
 </body>
 
 </html>
