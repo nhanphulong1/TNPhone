@@ -53,9 +53,6 @@ EOT;
                     );
                 }
                 ?>
-
-                <!-- Thêm sản phẩm mới -->
-                <a href="create.php" class="btn btn-primary">Thêm mới</a>
                 <table id="tblKhachHang" width="100%" class="table table-bordered">
                     <thead>
                         <th>#</th>
