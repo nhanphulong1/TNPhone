@@ -67,7 +67,7 @@ EOT;
             <!-- sidebar -->
             <?php include_once(__DIR__ . '/../../layouts/partials/sidebar.php'); ?>
             <!-- end sidebar -->
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <!-- content -->
                 <div class="text-center">
                     <br>
@@ -90,6 +90,7 @@ EOT;
                             <input type="number" name="sp_soluong" id="sp_soluong" class="form-control" placeholder="Nhập số lượng">
                         </div>
                     </div>
+                    <br>
                     <div class="row">
                         <div class="col-md-5">
                             <label>Nhà sản xuất: </label>
@@ -122,16 +123,17 @@ EOT;
                         <div class="col-md-9">
                             <div class="form-group">
                                 <label>Mô tả sản phẩm</label>
-                                <textarea name="sp_mota" id="sp_mota" class="form-control" rows="12" placeholder="Viết mô tả sản phẩm"></textarea>
+                                <textarea name="sp_mota" id="sp_mota" class="form-control" rows="10" placeholder="Viết mô tả sản phẩm"></textarea>
                             </div>
                         </div>
                     </div>
+                    <br>
                     <div class="row">
                         <div class="col-md-6 text-right">
                             <button name="btnSave" class="btn btn-primary">Lưu sản phẩm</button>
                         </div>
                         <div class="col-md-6">
-                            <button type="reset" class="btn btn-secondary">Nhập lại</button>
+                            <a href="index.php" class="btn btn-secondary">Hủy</a>
                         </div>
                     </div>
                     <br>
@@ -148,10 +150,16 @@ EOT;
             $sp_soluong = $_POST['sp_soluong'];
             $nsx_ma = $_POST['nsx_ma'];
             $km_ma = $_POST['km_ma'];
+            $sp_hinhdaidien = $_POST['sp_hinhdaidien'];
+
+            
         }
     ?>
 
     <!-- footer -->
+    <br>
+    <br>
+    <br>
     <?php include_once(__DIR__ . '/../../layouts/partials/footer.php'); ?>
     <!-- endfooter -->
 

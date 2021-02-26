@@ -57,7 +57,7 @@
                             <button name="btnSave" class="btn btn-primary">Lưu khuyến mãi</button>
                         </div>
                         <div class="col-md-6">
-                            <button type="reset" class="btn btn-secondary">Nhập lại</button>
+                            <a href="index.php" class="btn btn-secondary">Hủy</a>
                         </div>
                     </div>
                 </form>
