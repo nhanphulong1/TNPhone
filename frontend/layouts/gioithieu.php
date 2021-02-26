@@ -5,7 +5,7 @@
         include_once(__DIR__.'/../config.php');
         include_once(__DIR__.'/../head.php');
     ?>
-    <link rel="stylesheet" type="text/css" href="../../../assets/frontend/css/gioithieu.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/frontend/css/gioithieu.css">
 </head>
 <body>
     <!-- Header -->
@@ -18,7 +18,7 @@
             Cùng với sự phát triển của xã hội và thị trường công nghệ, TNPhone 
             đã và đang không ngừng nỗ lực trở thành đối tác uy tín với các nhà sản xuất Kỹ thuật số hàng đầu thế giới, đồng thời là điểm đến tin cậy của khách hàng.
         </p>
-        <img src="../../../shared/anh-gioithieu.png" alt="ảnh cửa hàng">
+        <img src="../../shared/anh-gioithieu.png" alt="ảnh cửa hàng">
         <h2>Sứ mệnh</h2>
         <p>
             Với mục tiêu mở rộng phạm vi cửa hàng trên toàn quốc, 

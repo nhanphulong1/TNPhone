@@ -5,7 +5,7 @@
         include_once(__DIR__.'/../config.php');
         include_once(__DIR__.'/../head.php');
     ?>
-    <link rel="stylesheet" type="text/css" href="../../../assets/frontend/css/lienhe.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/frontend/css/lienhe.css">
 </head>
 <body>
     <!-- Header -->

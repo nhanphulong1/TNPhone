@@ -18,7 +18,7 @@ if (session_id() === '') {
     <!-- Nhúng file Quản lý các Liên kết CSS dùng chung cho toàn bộ trang web -->
     <?php include_once(__DIR__ . '/../styles.php'); ?>
 
-    <link href="/assets/frontend/css/style.css" type="text/css" rel="stylesheet" />
+    <link href="/TNPhone/assets/frontend/css/style.css" type="text/css" rel="stylesheet" />
 
     <style>
         .hinhdaidien {
@@ -80,9 +80,9 @@ if (session_id() === '') {
                                         <td><?= $stt ?></td>
                                         <td>
                                             <?php if (empty($sanpham['hinhdaidien'])) : ?>
-                                                <img src="/shared/default-image.jpg" class="img-fluid hinhdaidien" />
+                                                <img src="/TNPhone/shared/default-image.jpg" class="img-fluid hinhdaidien" />
                                             <?php else : ?>
-                                                <img src="/shared/<?= $sanpham['hinhdaidien'] ?>" class="img-fluid hinhdaidien" />
+                                                <img src="/TNPhone/shared/<?= $sanpham['hinhdaidien'] ?>" class="img-fluid hinhdaidien" />
                                             <?php endif; ?>
                                         </td>
                                         <td><?= $sanpham['sp_ten'] ?></td>
