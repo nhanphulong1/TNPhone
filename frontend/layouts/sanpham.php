@@ -22,10 +22,8 @@
         include_once(__DIR__.'/../../dbconnect.php');
         //câu lệnh select
         $sql= <<<EOT
-        SELECT sp.sp_ma, sp_ten, sp_gia,
-            hsp_tentaptin
-        FROM sanpham sp left JOIN hinhsanpham hsp
-        ON sp.sp_ma = hsp.sp_ma
+        SELECT sp.sp_ma, sp_ten, sp_gia, sp_hinhdaidien
+        FROM sanpham sp
         JOIN nhasanxuat nsx ON sp.nsx_ma=nsx.nsx_ma
         WHERE nsx_ten LIKE '%$nsx%' AND sp_ten LIKE '%$tensp%'
         GROUP BY sp.sp_ma
@@ -38,7 +36,7 @@ EOT;
                 'sp_ma' => $row['sp_ma'],
                 'sp_ten' => $row['sp_ten'],
                 'sp_gia' => $row['sp_gia'],
-                'hsp_tentaptin' => $row['hsp_tentaptin']
+                'sp_hinhdaidien' => $row['sp_hinhdaidien']
             );
         }
     ?>
@@ -88,7 +86,7 @@ EOT;
                 <?php if(!empty($ds_sanpham)): ?>
                 <?php foreach($ds_sanpham as $sp):?>
                 <div class="card" style="width: 22%; display: inline-block;">
-                    <a href="/TNPhone/frontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>"><img src="/TNPhone/assets/uploads/products/<?= ($sp['hsp_tentaptin']=="") ? 'default-image.jpg':$sp['hsp_tentaptin'] ?>" class="card-img-top"></a>
+                    <a href="/TNPhone/frontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>"><img src="/TNPhone/assets/uploads/products/<?= ($sp['sp_hinhdaidien']=="") ? 'default-image.jpg':$sp['sp_hinhdaidien'] ?>" class="card-img-top"></a>
                     <div class="card-body">
                         <a href="/TNPhone/frontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>">
                             <h5 class="card-title"><?= $sp['sp_ten']?></h5>

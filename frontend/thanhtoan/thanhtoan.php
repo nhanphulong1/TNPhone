@@ -206,5 +206,8 @@ EOT;
     // 5. Thực thi hoàn tất, điều hướng về trang Danh sách
     // Hủy dữ liệu giỏ hàng trong session
     unset($_SESSION['giohangdata']);
-    echo 'Đặt hàng thành công. <a href="/TNPhone/index.php">Bấm vào đây để quay về trang chủ</a>';
+    echo "<script>
+        alert('Thanh toán thành công!');
+        location.href='/TNPhone/backend/pages/dashboard.php';
+        </script>";
 }
