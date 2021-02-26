@@ -93,7 +93,7 @@ EOT;
                                     <a href="edit.php?sp_ma=<?= $sp['sp_ma'] ?>" class="btn btn-warning">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <a href="delete.php?sp_ma=<?= $sp['sp_ma'] ?>" class="btn btn-danger">
+                                    <a class="btn btn-danger" onclick="confirmDelete(<?= $sp['sp_ma']; ?>) ">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                 </td>
@@ -147,6 +147,15 @@ EOT;
                 ]
             });
         });
+
+        function confirmDelete(sp_ma) {
+            var result = confirm("Xóa dòng này?");
+            var url = 'delete.php?sp_ma=' + sp_ma;
+            if (result == true) {
+
+                location.href = url;
+            }
+        }
     </script>
 </body>
 
