@@ -115,7 +115,7 @@ EOT;
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>Hình ảnh:</label>
+                                <label>Hình ảnh đại diện:</label>
                                 <img src="/TNPhone/shared/default-image.jpg" id="preview-img" width="200px" class="form-control">
                                 <input type="file" name="sp_hinhdaidien" id="sp_hinhdaidien" class="form-control">
                             </div>
@@ -144,16 +144,156 @@ EOT;
     </div>
 
     <?php
-        if(isset($_POST['btnSave'])){
-            $sp_ten = $_POST['sp_ten'];
-            $sp_gia = $_POST['sp_gia'];
-            $sp_soluong = $_POST['sp_soluong'];
-            $nsx_ma = $_POST['nsx_ma'];
-            $km_ma = $_POST['km_ma'];
-            $sp_hinhdaidien = $_POST['sp_hinhdaidien'];
+    if (isset($_POST['btnSave'])) {
+        $sp_ten = $_POST['sp_ten'];
+        $sp_gia = $_POST['sp_gia'];
+        $sp_soluong = $_POST['sp_soluong'];
+        $nsx_ma = $_POST['nsx_ma'];
+        $km_ma = $_POST['km_ma'];
+        $sp_hinhdaidien = $_POST['sp_hinhdaidien'];
 
-            
+        // Kiểm tra ràng buộc dữ liệu (Validation)
+        // Tạo biến lỗi để chứa thông báo lỗi
+        $errors = [];
+
+        // Validate tên sản phẩm
+        // Required
+        if (empty($sp_ten)) {
+            $errors['sp_ten'][] = [
+                'rule' => 'required',
+                'rule_value' => true,
+                'value' => $sp_ten,
+                'msg' => 'Vui lòng nhập tên sản phẩm'
+            ];
         }
+
+        // Minlength 10
+        if (!empty($sp_ten) && strlen($sp_ten) < 10) {
+            $errors['sp_ten'][] = [
+                'rule' => 'minlength',
+                'rule_value' => 10,
+                'value' => $sp_ten,
+                'msg' => 'Tên sản phẩm phải có ít nhất 10 ký tự'
+            ];
+        }
+        // Maxlength 255
+        if (!empty($sp_ten) && strlen($sp_ten) > 255) {
+            $errors['sp_ten'][] = [
+                'rule' => 'maxlength',
+                'rule_value' => 255,
+                'value' => $sp_ten,
+                'msg' => 'Tên sản phẩm không được vượt quá 255 ký tự'
+            ];
+        }
+
+        // Validate giá sản phẩm
+        // Required
+        if (empty($sp_gia)) {
+            $errors['sp_gia'][] = [
+                'rule' => 'required',
+                'rule_value' => true,
+                'value' => $sp_gia,
+                'msg' => 'Vui lòng nhập giá sản phẩm'
+            ];
+        }
+
+        // Minvalue 1,000,000
+        if (!empty($sp_gia) && $sp_gia < 1000000) {
+            $errors['sp_gia'][] = [
+                'rule' => 'minvalue',
+                'rule_value' => 1000000,
+                'value' => $sp_gia,
+                'msg' => 'Giá sản phẩm không được nhỏ hơn 1 triệu'
+            ];
+        }
+        // Maxvalue 1000000000
+        if (!empty($sp_gia) && $sp_gia > 1000000000) {
+            $errors['sp_gia'][] = [
+                'rule' => 'maxvalue',
+                'rule_value' => 1000000000,
+                'value' => $sp_gia,
+                'msg' => 'Giá sản phẩm không được lớn hơn 1 tỷ'
+            ];
+        }
+
+        // Validate số lượng sản phẩm
+        // Required
+        if (empty($sp_soluong)) {
+            $errors['sp_soluong'][] = [
+                'rule' => 'required',
+                'rule_value' => true,
+                'value' => $sp_soluong,
+                'msg' => 'Vui lòng nhập số lượng sản phẩm'
+            ];
+        }
+
+        // Minvalue 1
+        if (!empty($sp_soluong) && $sp_soluong < 1) {
+            $errors['sp_soluong'][] = [
+                'rule' => 'minvalue',
+                'rule_value' => 1,
+                'value' => $sp_soluong,
+                'msg' => 'Số lượng sản phẩm không được nhỏ hơn 1'
+            ];
+        }
+        // Maxvalue 1000
+        if (!empty($sp_soluong) && $sp_soluong > 1000) {
+            $errors['sp_soluong'][] = [
+                'rule' => 'maxvalue',
+                'rule_value' => 1000,
+                'value' => $sp_soluong,
+                'msg' => 'Số lượng sản phẩm không được lớn hơn 1000'
+            ];
+        }
+        // Validate nhà sản xuất
+        // Required
+        if (empty($nsx_ma)) {
+            $errors['nsx_ma'][] = [
+                'rule' => 'required',
+                'rule_value' => true,
+                'value' => $nsx_ma,
+                'msg' => 'Vui lòng chọn nhà sản xuất'
+            ];
+        }
+        // Validate hình đại diện sản phẩm
+        if (empty($sp_hinhdaidien)) {
+            $errors['sp_hinhdaidien'][] = [
+                'rule' => 'required',
+                'rule_value' => true,
+                'value' => $sp_hinhdaidien,
+                'msg' => 'Vui lòng chọn hình đại diện cho sản phẩm'
+            ];
+        }
+        // Validate mô tả sản phẩm
+        // Required
+        if (empty($sp_mota)) {
+            $errors['sp_mota'][] = [
+                'rule' => 'required',
+                'rule_value' => true,
+                'value' => $sp_mota,
+                'msg' => 'Vui lòng nhập mô tả sản phẩm'
+            ];
+        }
+
+        // Minlength 10
+        if (!empty($sp_mota) && strlen($sp_mota) < 10) {
+            $errors['sp_mota'][] = [
+                'rule' => 'minlength',
+                'rule_value' => 10,
+                'value' => $sp_mota,
+                'msg' => 'Mô tả sản phẩm phải có ít nhất 10 ký tự'
+            ];
+        }
+        // Maxlength 255
+        if (!empty($sp_mota) && strlen($sp_mota) > 5000) {
+            $errors['sp_mota'][] = [
+                'rule' => 'maxlength',
+                'rule_value' => 5000,
+                'value' => $sp_mota,
+                'msg' => 'Mô tả sản phẩm không được vượt quá 5000 ký tự'
+            ];
+        }
+    }
     ?>
 
     <!-- footer -->
