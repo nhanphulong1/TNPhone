@@ -256,14 +256,28 @@ EOT;
             ];
         }
         // Validate hình đại diện sản phẩm
-        if (empty($sp_hinhdaidien)) {
+        // Require
+        // if (empty($sp_hinhdaidien)) {
+        //     $errors['sp_hinhdaidien'][] = [
+        //         'rule' => 'required',
+        //         'rule_value' => true,
+        //         'value' => $sp_hinhdaidien,
+        //         'msg' => 'Vui lòng chọn hình đại diện cho sản phẩm'
+        //     ];
+        // }
+        // 
+        $upload_dir = __DIR__ . '/../../../assets/uploads/';
+        $subdir = 'products/';
+
+        if ($_FILES['sp_hinhdaidien']['error'] > 0) {
             $errors['sp_hinhdaidien'][] = [
-                'rule' => 'required',
+                'rule' => 'checkfile',
                 'rule_value' => true,
                 'value' => $sp_hinhdaidien,
                 'msg' => 'Vui lòng chọn hình đại diện cho sản phẩm'
             ];
         }
+
         // Validate mô tả sản phẩm
         // Required
         if (empty($sp_mota)) {
@@ -305,6 +319,21 @@ EOT;
 
     <!-- Nhúng file quản lý phần SCRIPT JAVASCRIPT -->
     <?php include_once(__DIR__ . '/../../layouts/scripts.php'); ?>
+
+    <!-- Phần script cho trang này -->
+    <script>
+        // Hiển thị ảnh preview (xem trước) khi người dùng chọn Ảnh
+        const reader = new FileReader();
+        const fileInput = document.getElementById("sp_hinhdaidien");
+        const img = document.getElementById("preview-img");
+        reader.onload = e => {
+            img.src = e.target.result;
+        }
+        fileInput.addEventListener('change', e => {
+            const f = e.target.files[0];
+            reader.readAsDataURL(f);
+        })
+    </script>
 </body>
 
 </html>
