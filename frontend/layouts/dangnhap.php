@@ -50,30 +50,36 @@
         if(isset($_POST['btnDangNhap'])){
             $kh_tendangnhap = $_POST['kh_tendangnhap'];
             $kh_matkhau = $_POST['kh_matkhau'];
-            $password = md5($kh_matkhau);
-            $sqlDangNhap = <<<EOT
-                SELECT *
-                FROM khachhang
-                WHERE kh_tendangnhap = '$kh_tendangnhap' AND kh_matkhau = '$password'
-            EOT;
 
-            $resultDangNhap = mysqli_query($conn,$sqlDangNhap);
-
-            if(mysqli_num_rows($resultDangNhap)>0){
-                $row = mysqli_fetch_array($resultDangNhap,MYSQLI_ASSOC);
-                $kh_hoten = $row['kh_hoten'];
-                setcookie("kh_tendangnhap",$kh_tendangnhap,time()+320,"/");
-                setcookie("kh_hoten",$kh_hoten,time()+320,"/");
-                echo "<script>location.href='/TNPhone/';</script>";
-                if(isset($_POST['chk_ghinho'])){
-                    setcookie("user",$kh_tendangnhap,time()+(68400*2),"/");
-                    setcookie("pass",$kh_matkhau,time()+(68400*2),"/");
-                }
+            if($kh_tendangnhap=='admin' && $kh_matkhau =='admin'){
+                setcookie("kh_tendangnhap",$kh_tendangnhap,time()+3600,"/");
+                echo "<script>location.href='/TNPhone/backend/pages/dashboard.php';</script>";
             }else{
-                echo "<script>
-                    document.getElementById('thongbao').className='alert alert-danger';
-                    document.getElementById('thongbao').innerHTML='Sai tên đăng nhập hoặc mật khẩu!';
-                </script>";
+                $password = md5($kh_matkhau);
+                $sqlDangNhap = <<<EOT
+                    SELECT *
+                    FROM khachhang
+                    WHERE kh_tendangnhap = '$kh_tendangnhap' AND kh_matkhau = '$password'
+                EOT;
+
+                $resultDangNhap = mysqli_query($conn,$sqlDangNhap);
+
+                if(mysqli_num_rows($resultDangNhap)>0){
+                    $row = mysqli_fetch_array($resultDangNhap,MYSQLI_ASSOC);
+                    $kh_hoten = $row['kh_hoten'];
+                    setcookie("kh_tendangnhap",$kh_tendangnhap,time()+3600,"/");
+                    setcookie("kh_hoten",$kh_hoten,time()+3600,"/");
+                    echo "<script>location.href='/TNPhone/';</script>";
+                    if(isset($_POST['chk_ghinho'])){
+                        setcookie("user",$kh_tendangnhap,time()+(86400*2),"/");
+                        setcookie("pass",$kh_matkhau,time()+(86400*2),"/");
+                    }
+                }else{
+                    echo "<script>
+                        document.getElementById('thongbao').className='alert alert-danger';
+                        document.getElementById('thongbao').innerHTML='Sai tên đăng nhập hoặc mật khẩu!';
+                    </script>";
+                }
             }
 
         }

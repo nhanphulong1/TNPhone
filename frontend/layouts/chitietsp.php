@@ -358,7 +358,7 @@ EOT;
                                     <div class="preview-pic tab-content">
                                         <?php foreach ($sanphamRow['danhsachhinhanh'] as $hinhsanpham) : ?>
                                             <div class="tab-pane <?= ($hinhsanpham == $hinhsanphamdautien) ? 'active' : '' ?>" id="pic-<?= $hinhsanpham['hsp_ma'] ?>">
-                                                <img src="/TNPhone/shared/<?= $hinhsanpham['hsp_tentaptin'] ?>" />
+                                                <img src="/TNPhone/assets/uploads/products/<?= $hinhsanpham['hsp_tentaptin'] ?>" />
                                             </div>
                                         <?php endforeach; ?>
                                     </div>
@@ -366,7 +366,7 @@ EOT;
                                         <?php foreach ($sanphamRow['danhsachhinhanh'] as $hinhsanpham) : ?>
                                             <li class="<?= ($hinhsanpham == $hinhsanphamdautien) ? 'active' : '' ?>">
                                                 <a data-target="#pic-<?= $hinhsanpham['hsp_ma'] ?>" data-toggle="tab">
-                                                    <img src="/TNPhone/shared/<?= $hinhsanpham['hsp_tentaptin'] ?>" />
+                                                    <img src="/TNPhone/assets/uploads/products/<?= $hinhsanpham['hsp_tentaptin'] ?>" />
                                                 </a>
                                             </li>
                                         <?php endforeach; ?>
@@ -375,13 +375,13 @@ EOT;
                                 <?php else : ?>
                                     <div class="preview-pic tab-content">
                                         <div class="tab-pane active" id="pic-1">
-                                            <img src="/TNPhone/shared/default-image.jpg" />
+                                            <img src="/TNPhone/assets/uploads/products/default-image.jpg" />
                                         </div>
                                     </div>
                                     <ul class="preview-thumbnail nav nav-tabs">
                                         <li class="active">
                                             <a data-target="#pic-1" data-toggle="tab">
-                                                <img src="/TNPhone/shared/default-image.jpg" />
+                                                <img src="/TNPhone/assets/uploads/products/default-image.jpg" />
                                             </a>
                                         </li>
                                     </ul>

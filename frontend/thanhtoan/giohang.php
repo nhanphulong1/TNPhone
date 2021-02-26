@@ -80,9 +80,9 @@ if (session_id() === '') {
                                         <td><?= $stt ?></td>
                                         <td>
                                             <?php if (empty($sanpham['hinhdaidien'])) : ?>
-                                                <img src="/TNPhone/shared/default-image.jpg" class="img-fluid hinhdaidien" />
+                                                <img src="/TNPhone/assets/uploads/products/default-image.jpg" class="img-fluid hinhdaidien" />
                                             <?php else : ?>
-                                                <img src="/TNPhone/shared/<?= $sanpham['hinhdaidien'] ?>" class="img-fluid hinhdaidien" />
+                                                <img src="/TNPhone/assets/uploads/products/<?= $sanpham['hinhdaidien'] ?>" class="img-fluid hinhdaidien" />
                                             <?php endif; ?>
                                         </td>
                                         <td><?= $sanpham['sp_ten'] ?></td>
@@ -105,7 +105,7 @@ if (session_id() === '') {
                     <?php else : ?>
                         <h2>Giỏ hàng rỗng!!!</h2>
                     <?php endif; ?>
-                    <a href="/TNPhone/frontend" class="btn btn-warning btn-md"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay
+                    <a href="/TNPhone/" class="btn btn-warning btn-md"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay
                         về trang chủ</a>
                     <a href="/TNPhone/frontend/thanhtoan/thanhtoan.php" class="btn btn-primary btn-md"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Thanh toán</a>
                 </div>

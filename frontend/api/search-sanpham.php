@@ -25,9 +25,9 @@
     foreach($ds_sanpham as $sp){
         echo "<li><a href='/TNPhone/frontend/layouts/chitietsp.php?sp_ma=".$sp['sp_ma']."'>";
         if($sp['hsp_tentaptin']!= ''){
-            echo "<img src='/TNPhone/shared/".$sp['hsp_tentaptin']."'>";
+            echo "<img src='/TNPhone/assets/uploads/products/".$sp['hsp_tentaptin']."'>";
         }else
-            echo "<img src='/TNPhone/shared/default-image.jpg'>";
+            echo "<img src='/TNPhone/assets/uploads/products/default-image.jpg'>";
         echo "<h6>".$sp['sp_ten']."</h6>";
         echo "<span class='giasp'>".number_format($sp['sp_gia'],0,".",",")." VNĐ</span>";
         echo "</li>";
