@@ -138,7 +138,7 @@ EOT;
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Hình ảnh đại diện:</label>
-                                <img src="/TNPhone/assets/uploads/product-avatars/<?= $rowSP['sp_hinhdaidien']; ?>" id="preview-img" width="200px" class="form-control">
+                                <img src="/TNPhone/assets/uploads/products/<?= $rowSP['sp_hinhdaidien']; ?>" id="preview-img" width="200px" class="form-control">
                                 <input type="file" name="sp_hinhdaidien" id="sp_hinhdaidien" class="form-control">
                             </div>
                         </div>
@@ -306,7 +306,7 @@ EOT;
     ) {
 
         $upload_dir = __DIR__ . '/../../../assets/uploads/';
-        $subdir = 'product-avatars/';
+        $subdir = 'products/';
 
         if (empty($_FILES['sp_hinhdaidien']['name'])) {
             // 2.Chuẩn bị câu truy vấn sql

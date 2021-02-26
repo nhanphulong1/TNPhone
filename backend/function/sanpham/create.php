@@ -313,7 +313,7 @@ EOT;
     ) {
 
         $upload_dir = __DIR__ . '/../../../assets/uploads/';
-        $subdir = 'product-avatars/';
+        $subdir = 'products/';
 
         $sp_hinhdaidien = $_FILES['sp_hinhdaidien']['name'];
         $tentaptin = date('Ymd') . '_' . $sp_hinhdaidien;

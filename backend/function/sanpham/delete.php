@@ -11,7 +11,7 @@ $resultSelect = mysqli_query($conn,$sqlSelect);
 $row1 = mysqli_fetch_array($resultSelect,MYSQLI_ASSOC);
 
 $upload_dir = __DIR__.'/../../../assets/uploads/';
-$subdir = 'product-avatars/';
+$subdir = 'products/';
 
 $old_file = $upload_dir . $subdir . $row1['sp_hinhdaidien'];
 
