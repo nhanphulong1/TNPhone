@@ -207,7 +207,7 @@ EOT;
     // Hủy dữ liệu giỏ hàng trong session
     unset($_SESSION['giohangdata']);
     echo "<script>
-        alert('Thanh toán thành công!');
-        location.href='/TNPhone/backend/pages/dashboard.php';
+        alert('Thanh toán thành công! Cảm ơn bạn đã mua hàng của chúng tôi ^^');
+        location.href='/TNPhone/';
         </script>";
 }
