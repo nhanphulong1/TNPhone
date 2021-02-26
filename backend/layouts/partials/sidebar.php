@@ -28,6 +28,22 @@
             </li>
             <!-- End Menu Chuyên mục sản phẩm -->
 
+            <!-- Menu Chuyên mục khách hàng -->
+            <li class="nav-item">
+                <a href="#danhmucKhachHang" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    Khách hàng
+                </a>
+                <ul class="collapse" id="danhmucKhachHang">
+                    <li class="nav-item">
+                        <a href="/TNPhone/backend/function/khachhang/index.php">Danh sách</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/TNPhone/backend/function/khachhang/create.php">Thêm mới</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- End Menu Chuyên mục khách hàng -->
+
             <!-- Menu Chuyên mục khuyến mãi -->
             <li class="nav-item">
                 <a href="#danhmucKhuyenMai" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
