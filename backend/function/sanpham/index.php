@@ -62,7 +62,6 @@ EOT;
                         'sp_ma' => $rowSanPham['sp_ma'],
                         'sp_ten' => $rowSanPham['sp_ten'],
                         'sp_gia' => $rowSanPham['sp_gia'],
-                        'sp_giacu' => $rowSanPham['sp_giacu'],
                         'sp_ngaycapnhat' => $rowSanPham['sp_ngaycapnhat'],
                         'sp_soluong' => $rowSanPham['sp_soluong'],
                         'km_ma' => $rowSanPham['km_ma'],
@@ -81,7 +80,6 @@ EOT;
                         <th>STT</th>
                         <th>Tên SP</th>
                         <th>Giá</th>
-                        <th>Giá cũ</th>
                         <th>Ngày CN</th>
                         <th>Số lượng</th>
                         <th>NSX</th>
@@ -104,15 +102,14 @@ EOT;
                                 </td>
                                 <td><?= $sp['sp_ten']; ?></td>
                                 <td class="text-right"><?= number_format($sp['sp_gia'], "0", ".", ","); ?></td>
-                                <td class="text-right"><?= number_format($sp['sp_giacu'], "0", ".", ","); ?></td>
                                 <td><?= date('d/m/Y H:i:s', strtotime($sp['sp_ngaycapnhat'])) ?></td>
                                 <td><?= $sp['sp_soluong']; ?></td>
                                 <td><?= $sp['nsx_ten']; ?></td>
                                 <td width="120px">
-                                    <?php if (isset($sp['sp_hinhdaidien'])) : ?>
+                                    <?php if (!$sp['sp_hinhdaidien']) : ?>
                                         <img src="/TNPhone/shared/default-image.jpg" width="100%">
                                     <?php else : ?>
-                                        <img src="" alt="">
+                                        <img src="/TNPhone/assets/uploads/product-avatars/<?= $sp['sp_hinhdaidien']; ?>" width="100%">
                                     <?php endif; ?>
                                 </td>
                                 <td width="250px">
