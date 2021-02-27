@@ -89,53 +89,58 @@ EOT;
 
                 ?>
 
-                
+
                 <form name="frmDonHang" method="POST" action="">
-                    <h4>Thông tin đơn hàng</h4>
+                    <div class="text-center">
+                        <br>
+                        <h1>THÔNG TIN ĐƠN HÀNG</h1>
+                        <hr>
+                        <br>
+                    </div>
                     <div class="form-group">
-                        <label for="">Khách hàng</label>
+                        <label for="">Khách hàng: </label>
                         <select name="kh_tendangnhap" id="kh_tendangnhap" class="form-control">
-                            <?php foreach ($kh as $ct) : ?>
-                                <option value="<?= $ct['kh_tendangnhap'] ?>"><?= $ct['kh_ten'] ?></option>
+                            <option value="">-- Chọn khách hàng --</option>
+                            <?php foreach ($danhsachKH as $kh) : ?>
+                                <option value="<?= $kh['kh_tendangnhap'] ?>"><?= $kh['kh_hoten'] ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
-                    <div class="row">
-                        <div class="form-group col">
-                            <label for="">Ngày lập</label>
-                            <input type="date" name="dh_ngaylap" id="dh_ngaylap" class="form-control">
-                        </div>
-                        <div class="form-group col">
-                            <label for="">Ngày giao</label>
-                            <input type="date" name="dh_ngaygiao" id="dh_ngaygiao" class="form-control">
-                        </div>
-                        <div class="form-group col">
-                            <label for="">Nơi giao</label>
-                            <input type="text" name="dh_noigiao" id="dh_noigiao" class="form-control">
-                        </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="">Nơi giao:</label>
+                        <input type="text" name="dh_noigiao" id="dh_noigiao" class="form-control" placeholder="Nhập địa chỉ giao hàng">
                     </div>
+                    <br>
                     <div class="row">
                         <div class="form-group col">
-                            <label for="">Trạng thái thanh toán</label> <br>
-                            <input type="radio" value="0" name="dh_trangthaithanhtoan" checked> Chưa thanh toán
-                            <input type="radio" vaule="1" name="dh_trangthaithanhtoan"> Đã thanh toán
+                            <label for="">Trạng thái thanh toán:</label> <br>
+                            <input type="radio" value="0" name="dh_trangthaithanhtoan" checked> <span> Chưa thanh toán</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="radio" vaule="1" name="dh_trangthaithanhtoan"> <span> Đã thanh toán</span>
                         </div>
                         <div class="form-group col">
-                            <label for="">Hình thức thanh toán</label> <br>
+                            <label for="">Hình thức thanh toán: </label> <br>
                             <select name="kh_tendangnhap" id="kh_tendangnhap" class="form-control">
-                                <?php foreach ($httt as $ct) : ?>
-                                    <option value="<?= $ct['httt_ma'] ?>"><?= $ct['httt_ten'] ?></option>
+                                <option value="">-- Chọn hình thức thanh toán --</option>
+                                <?php foreach ($danhsachHTTT as $httt) : ?>
+                                    <option value="<?= $httt['httt_ma'] ?>"><?= $httt['httt_ten'] ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
+
                     <fieldset id="chiTietDonHangContainer">
-                        <h4>Chi tiết đơn hàng</h4>
+                        <div class="text-center">
+                            <hr>
+                            <h2>CHI TIẾT ĐƠN HÀNG</h2>
+                            <hr>
+                        </div>
+                        <br>
                         <div class="row">
                             <div class="col">
                                 <label>Sản phẩm: </label>
                                 <select class="form-control" name="sp_ma" id="sp_ma">
-                                    <option value="">Vui lòng chọn sản phẩm</option>
+                                    <option value="">--- Chọn sản phẩm ---</option>
                                     <?php foreach ($danhsachSP as $sp) : ?>
                                         <option value="<?= $sp['sp_ma']; ?> " data-sp_gia="<?= $sp['sp_gia']; ?>"><?= $sp['sp_ten']; ?> - <?= $sp['sp_gia']; ?></option>
                                     <?php endforeach; ?>
@@ -143,13 +148,14 @@ EOT;
                             </div>
                             <div class="col">
                                 <label> Số lượng:</label>
-                                <input type="number" name="soluong" id="soluong" class="form-control">
+                                <input type="number" name="soluong" id="soluong" class="form-control" placeholder="Nhập số lượng">
                             </div>
                             <div class="col">
-                                <label>Xử lý</label> <br>
-                                <button type="button" class="btn btn-secondary" id="btnThemSP">Thêm vào đơn hàng</button>
+                                <label>Xử lý:</label> <br>
+                                <button type="button" class="btn btn-warning" id="btnThemSP">Thêm vào đơn hàng</button>
                             </div>
                         </div>
+                        <br>
                         <table id="tblChiTietDonHang" class="table table-bordered">
                             <thead>
                                 <th>Sản phẩm</th>
@@ -160,16 +166,25 @@ EOT;
                             </thead>
                             <tbody>
                             </tbody>
-
                         </table>
                     </fieldset>
-                    <button name="btnSave" class="btn btn-primary">Lưu đơn hàng</button>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6 text-right">
+                            <button name="btnSave" class="btn btn-primary">Lưu đơn hàng</button>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="index.php" class="btn btn-secondary">Hủy</a>
+                        </div>
+                    </div>
+                    <br><br>
                 </form>
-
             </div>
             <!-- end Content -->
         </div>
     </div>
+
+<?
 
     <!-- footer -->
     <?php include_once(__DIR__ . '/../../layouts/partials/footer.php'); ?>
@@ -181,6 +196,19 @@ EOT;
     <!-- Các file Javascript sử dụng riêng cho trang này, liên kết tại đây -->
 
     <script>
+        function formatNumber(nStr, decSeperate, groupSeperate) {
+            nStr += '';
+            x = nStr.split(decSeperate);
+            x1 = x[0];
+            x2 = x.length > 1 ? '.' + x[1] : '';
+            var rgx = /(\d+)(\d{3})/;
+            while (rgx.test(x1)) {
+                x1 = x1.replace(rgx, '$1' + groupSeperate + '$2');
+            }
+            return x1 + x2;
+        }
+
+
         $('#btnThemSP').click(function() {
             // Lấy thông tin sản phẩm
             var sp_ma = $('#sp_ma').val();
@@ -192,13 +220,14 @@ EOT;
             // Tạo mẫu trong html table
             var htmlStr = '<tr>';
             htmlStr += '<td>' + sp_ten + '<input type="hidden" name="sp_ma[]" value="' + sp_ma + '" /></td>';
-            htmlStr += '<td>' + soluong + '<input type="hidden" name="sp_dh_soluong[]" value="' + soluong + '" /></td>';
-            htmlStr += '<td>' + sp_gia + '<input type="hidden" name="sp_dh_dongia[]" value="' + sp_gia + '" /></td>';
-            htmlStr += '<td>' + thanhtien + '</td>';
-            htmlStr += '<td><button type="button" class="btn btn-danger btn-delete-row">Xoá</button>';
+            htmlStr += '<td>' + soluong + '<input type="hidden" name="ctdh_soluong[]" value="' + soluong + '" /></td>';
+            htmlStr += '<td class="text-right">' + formatNumber(sp_gia, '.', ',') + '<input type="hidden" name="ctdh_gia[]" value="' + sp_gia + '" /></td>';
+            htmlStr += '<td class="text-right">' + formatNumber(thanhtien, '.', ',') + '</td>';
+            htmlStr += '<td><button type="button" class="btn btn-danger btn-delete-row"><i class="fa fa-trash"></i></button>';
             htmlStr += '</tr>';
             // Thêm vào table
             $('#tblChiTietDonHang tbody').append(htmlStr);
+
 
             //Clear
             $('#sp_ma').val('');

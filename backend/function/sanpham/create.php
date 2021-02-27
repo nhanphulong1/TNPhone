@@ -316,7 +316,7 @@ EOT;
         $subdir = 'products/';
 
         $sp_hinhdaidien = $_FILES['sp_hinhdaidien']['name'];
-        $tentaptin = date('Ymd') . '_' . $sp_hinhdaidien;
+        $tentaptin = date('YmdHis') . '_' . $sp_hinhdaidien;
         move_uploaded_file($_FILES['sp_hinhdaidien']['tmp_name'], $upload_dir . $subdir . $tentaptin);
 
 

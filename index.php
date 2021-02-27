@@ -103,7 +103,7 @@ EOT;
                 <div>
                     <?php if(!empty($ds_sanpham)): ?>
                     <?php foreach($ds_sanpham as $sp):?>
-                    <div class="card" style="width: 20%; display: inline-block;">
+                    <div class="card" style="width: 22%; display: inline-block;">
                         <a href="/TNPhone/frontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>"><img src="<?= (!$sp['hsp_tentaptin']) ? '/TNPhone/assets/uploads/products/default-image.jpg':'/TNPhone/assets/uploads/products/'.$sp['hsp_tentaptin'] ?>" class="card-img-top"></a>
                         <div class="card-body">
                             <a href="/TNPhone/frontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>">
@@ -125,7 +125,7 @@ EOT;
                 <div>
                     <?php if(!empty($ds_sanphamnhieu)): ?>
                     <?php foreach($ds_sanphamnhieu as $sp):?>
-                    <div class="card" style="width: 20%; display: inline-block;">
+                    <div class="card" style="width: 22%; display: inline-block;">
                         <a href="/TNPhone/frontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>"><img src="<?= (!$sp['hsp_tentaptin']) ? '/TNPhone/assets/uploads/products/default-image.jpg':'/TNPhone/assets/uploads/products/'.$sp['hsp_tentaptin'] ?>" class="card-img-top"></a>
                         <div class="card-body">
                             <a href="/TNPhone/frontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>">

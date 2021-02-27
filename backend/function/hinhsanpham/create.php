@@ -120,7 +120,7 @@
                     $subdir = 'products/';
 
                     $hsp_tentaptin = $_FILES['hsp_tentaptin']['name'];
-                    $tentaptin = date('Ymd') . '_' . $hsp_tentaptin;
+                    $tentaptin = date('YmdHis') . '_' . $hsp_tentaptin;
                     move_uploaded_file($_FILES['hsp_tentaptin']['tmp_name'], $upload_dir . $subdir . $tentaptin);
 
                     if ($_FILES['hsp_tentaptin']['error'] > 0) {

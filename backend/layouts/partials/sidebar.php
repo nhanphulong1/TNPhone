@@ -21,6 +21,22 @@
             </li>
             <!-- End Menu Chuyên mục khách hàng -->
 
+            <!-- Menu Chuyên mục hình sản phẩm -->
+            <li class="nav-item">
+                <a href="#danhmucDonHang" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    Đơn hàng
+                </a>
+                <ul class="collapse" id="danhmucDonHang">
+                    <li class="nav-item">
+                        <a href="/TNPhone/backend/function/donhang/index.php">Danh sách</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/TNPhone/backend/function/donhang/create.php">Thêm mới</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- End Menu Chuyên mục hình sản phẩm -->
+
             <!-- Menu Chuyên mục sản phẩm -->
             <li class="nav-item">
                 <a href="#danhmucSanPham" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
