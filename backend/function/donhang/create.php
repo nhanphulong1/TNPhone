@@ -116,7 +116,7 @@ EOT;
                         <div class="form-group col">
                             <label for="">Trạng thái thanh toán:</label> <br>
                             <input type="radio" value="0" name="dh_trangthai" checked> <span> Chưa thanh toán</span> &nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="radio" vaule="1" name="dh_trangthai"> <span> Đã thanh toán</span>
+                            <input type="radio" value="1" name="dh_trangthai"> <span> Đã thanh toán</span>
                         </div>
                         <div class="form-group col">
                             <label for="">Hình thức thanh toán: </label> <br>
@@ -229,7 +229,7 @@ EOT;
         }
 
         
-        // echo '<script>location.href = "index.php";</script>';
+        echo '<script>location.href = "index.php" alert("Thêm thành công");</script>';
     }
     ?>
 

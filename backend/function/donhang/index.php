@@ -138,7 +138,7 @@ EOT;
 
         function confirmDelete(dh_ma) {
             var result = confirm("Xóa dòng này?");
-            var url = 'delete.php?hsp_ma=' + dh_ma;
+            var url = 'delete.php?dh_ma=' + dh_ma;
             if (result == true) {
 
                 location.href = url;
