@@ -326,7 +326,7 @@ EOT;
             echo '<script>location.href ="index.php"; alert("Sửa thành công");</script>';
         } else {
             $sp_hinhdaidien = $_FILES['sp_hinhdaidien']['name'];
-            $tentaptin = date('YmdHis') . '_' . $sp_hinhdaidien;
+            $tentaptin = date('YmdHis') . '_avatar_' . $sp_hinhdaidien;
             move_uploaded_file($_FILES['sp_hinhdaidien']['tmp_name'], $upload_dir . $subdir . $tentaptin);
 
             $old_file = $upload_dir . $subdir . $rowSP['sp_hinhdaidien'];

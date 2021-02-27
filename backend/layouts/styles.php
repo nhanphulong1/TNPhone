@@ -6,6 +6,8 @@
 <link rel="stylesheet" href="/TNPhone/assets/vendor/DataTables/datatables.min.css" type="text/css">
 <!-- Button -->
 <link rel="stylesheet" href="/TNPhone/assets/vendor/DataTables/Buttons-1.6.5/css/buttons.bootstrap4.min.css" type="text/css">
+<!-- CharJS -->
+<link rel="stylesheet" href="/Salomon/assets/vendor/chartJS/Chart.min.css" type="text/css">
 <!-- Head icon -->
 <link rel="icon" type="img/jpg" href="/TNPhone/shared/logo.png">
 <!-- Custom css - Các file css do chúng ta tự viết -->

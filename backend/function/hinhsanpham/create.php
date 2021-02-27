@@ -84,11 +84,11 @@
 
                     // Validate tên sản phẩm
                     // Required
-                    if (empty($sp_ten)) {
-                        $errors['sp_ten'][] = [
+                    if (empty($sp_ma)) {
+                        $errors['sp_ma'][] = [
                             'rule' => 'required',
                             'rule_value' => true,
-                            'value' => $sp_ten,
+                            'value' => $sp_ma,
                             'msg' => 'Vui lòng nhập tên sản phẩm'
                         ];
                     }
@@ -131,7 +131,7 @@
                         die;
                     } else {
                         $hsp_tentaptin = $_FILES['hsp_tentaptin']['name'];
-                        $tentaptin = date('Ymd') . '_' . $hsp_tentaptin;
+                        $tentaptin = date('YmdHis') . '_' . $hsp_tentaptin;
                         move_uploaded_file($_FILES['hsp_tentaptin']['tmp_name'], $upload_dir . $subdir . $tentaptin);
                     }
                     $sqlInsert = "INSERT INTO `hinhsanpham` (hsp_tentaptin, sp_ma) VALUES ('$tentaptin',$sp_ma)";

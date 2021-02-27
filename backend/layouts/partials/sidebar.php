@@ -3,7 +3,7 @@
         <ul class="nav flex-column">
             <!-- #################### Menu các trang Quản lý #################### -->
             <li class="nav-item">
-                <a href="/backend/pages/dashboard.php">Bảng tin <span class="sr-only">(current)</span></a>
+                <a href="/TNPhone/backend/pages/dashboard.php">Bảng tin <span class="sr-only">(current)</span></a>
             </li>
             <hr style="border: 1px solid red; width: 80%;" />
             <!-- #################### End Menu các trang Quản lý #################### -->
@@ -84,6 +84,15 @@
                 </ul>
             </li>
             <!-- End Menu Chuyên mục khuyến mãi -->
+
+            <!-- Menu Chuyên mục khuyến mãi -->
+            <li class="nav-item">
+                <a href="/TNPhone/backend/function/lienhe/index.php">
+                    Liên hệ
+                </a>
+            </li>
+            <!-- End Menu Chuyên mục khuyến mãi -->
+
 
 
 
