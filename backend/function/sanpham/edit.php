@@ -138,7 +138,7 @@ EOT;
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Hình ảnh đại diện:</label>
-                                <img src="/TNPhone/assets/uploads/products/<?= $rowSP['sp_hinhdaidien']; ?>" id="preview-img" width="200px" class="form-control">
+                                <img src="<?= (!$rowSP['sp_hinhdaidien']) ? '/TNPhone/assets/uploads/products/default-image.jpg':'/TNPhone/assets/uploads/products/'.$rowSP['sp_hinhdaidien'] ?>" id="preview-img" width="200px" class="form-control">
                                 <input type="file" name="sp_hinhdaidien" id="sp_hinhdaidien" class="form-control">
                             </div>
                         </div>
