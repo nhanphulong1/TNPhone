@@ -18,12 +18,11 @@
         include_once(__DIR__.'/dbconnect.php');
         //câu lệnh select
         $sql= <<<EOT
-        SELECT sp.sp_ma, sp_ten, sp_gia,hsp_tentaptin
-            FROM sanpham sp left JOIN hinhsanpham hsp
-            ON sp.sp_ma = hsp.sp_ma
+        SELECT sp_ma, sp_ten, sp_gia,sp_hinhdaidien
+            FROM sanpham
             WHERE sp_ten LIKE '%%'
-            GROUP BY sp.sp_ma
-            ORDER BY sp.sp_ngaycapnhat desc
+            GROUP BY sp_ma
+            ORDER BY sp_ngaycapnhat desc
             LIMIT 5
 EOT;
         // Câu lệnh thực thi
@@ -34,15 +33,14 @@ EOT;
                 'sp_ma' => $row['sp_ma'],
                 'sp_ten' => $row['sp_ten'],
                 'sp_gia' => $row['sp_gia'],
-                'hsp_tentaptin' => $row['hsp_tentaptin']
+                'sp_hinhdaidien' => $row['sp_hinhdaidien']
             );
         }
 
 
         $sqlSanPhamNhieu= <<<EOT
-        SELECT sp.sp_ma, sp_ten, sp_gia,hsp_tentaptin,sp_ngaycapnhat,ifnull(SUM(ct.ctdh_soluong),0) soluongdaban
-            FROM sanpham sp left JOIN hinhsanpham hsp
-            ON sp.sp_ma = hsp.sp_ma
+        SELECT sp.sp_ma, sp_ten, sp_gia,sp_hinhdaidien,sp_ngaycapnhat,ifnull(SUM(ct.ctdh_soluong),0) soluongdaban
+            FROM sanpham sp
             left JOIN chitietdathang ct ON ct.sp_ma = sp.sp_ma
             WHERE sp_ten LIKE '%%'
             GROUP BY sp.sp_ma
@@ -57,7 +55,7 @@ EOT;
                 'sp_ma' => $row['sp_ma'],
                 'sp_ten' => $row['sp_ten'],
                 'sp_gia' => $row['sp_gia'],
-                'hsp_tentaptin' => $row['hsp_tentaptin']
+                'sp_hinhdaidien' => $row['sp_hinhdaidien']
             );
         }
     ?>
@@ -103,8 +101,8 @@ EOT;
                 <div>
                     <?php if(!empty($ds_sanpham)): ?>
                     <?php foreach($ds_sanpham as $sp):?>
-                    <div class="card" style="width: 22%; display: inline-block;">
-                        <a href="/TNPhone/frontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>"><img src="<?= (!$sp['hsp_tentaptin']) ? '/TNPhone/assets/uploads/products/default-image.jpg':'/TNPhone/assets/uploads/products/'.$sp['hsp_tentaptin'] ?>" class="card-img-top"></a>
+                    <div class="card" style="width: 20%; display: inline-block;">
+                        <a href="/TNPhone/frontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>"><img src="<?= (!$sp['sp_hinhdaidien']) ? '/TNPhone/assets/uploads/products/default-image.jpg':'/TNPhone/assets/uploads/products/'.$sp['sp_hinhdaidien'] ?>" class="card-img-top"></a>
                         <div class="card-body">
                             <a href="/TNPhone/frontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>">
                                 <h5 class="card-title"><?= $sp['sp_ten']?></h5>
@@ -125,8 +123,8 @@ EOT;
                 <div>
                     <?php if(!empty($ds_sanphamnhieu)): ?>
                     <?php foreach($ds_sanphamnhieu as $sp):?>
-                    <div class="card" style="width: 22%; display: inline-block;">
-                        <a href="/TNPhone/frontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>"><img src="<?= (!$sp['hsp_tentaptin']) ? '/TNPhone/assets/uploads/products/default-image.jpg':'/TNPhone/assets/uploads/products/'.$sp['hsp_tentaptin'] ?>" class="card-img-top"></a>
+                    <div class="card" style="width: 20%; display: inline-block;">
+                        <a href="/TNPhone/frontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>"><img src="<?= (!$sp['sp_hinhdaidien']) ? '/TNPhone/assets/uploads/products/default-image.jpg':'/TNPhone/assets/uploads/products/'.$sp['sp_hinhdaidien'] ?>" class="card-img-top"></a>
                         <div class="card-body">
                             <a href="/TNPhone/frontend/layouts/chitietsp.php?sp_ma=<?=$sp['sp_ma'] ?>">
                                 <h5 class="card-title"><?= $sp['sp_ten']?></h5>
