@@ -115,12 +115,12 @@ EOT;
                     <div class="row">
                         <div class="form-group col">
                             <label for="">Trạng thái thanh toán:</label> <br>
-                            <input type="radio" value="0" name="dh_trangthaithanhtoan" checked> <span> Chưa thanh toán</span> &nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="radio" vaule="1" name="dh_trangthaithanhtoan"> <span> Đã thanh toán</span>
+                            <input type="radio" value="0" name="dh_trangthai" checked> <span> Chưa thanh toán</span> &nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="radio" vaule="1" name="dh_trangthai"> <span> Đã thanh toán</span>
                         </div>
                         <div class="form-group col">
                             <label for="">Hình thức thanh toán: </label> <br>
-                            <select name="kh_tendangnhap" id="kh_tendangnhap" class="form-control">
+                            <select name="httt_ma" id="httt_ma" class="form-control">
                                 <option value="">-- Chọn hình thức thanh toán --</option>
                                 <?php foreach ($danhsachHTTT as $httt) : ?>
                                     <option value="<?= $httt['httt_ma'] ?>"><?= $httt['httt_ten'] ?></option>
@@ -148,11 +148,11 @@ EOT;
                             </div>
                             <div class="col">
                                 <label> Số lượng:</label>
-                                <input type="number" name="soluong" id="soluong" class="form-control" placeholder="Nhập số lượng">
+                                <input type="number" name="ctdh_soluong" id="ctdh_soluong" class="form-control" placeholder="Nhập số lượng">
                             </div>
                             <div class="col">
                                 <label>Xử lý:</label> <br>
-                                <button type="button" class="btn btn-warning" id="btnThemSP">Thêm vào đơn hàng</button>
+                                <button type="button" class="btn btn-warning" name="btnAddCart" id="btnThemSP">Thêm vào đơn hàng</button>
                             </div>
                         </div>
                         <br>
@@ -184,7 +184,22 @@ EOT;
         </div>
     </div>
 
-<?
+    <?php
+    if(isset($_POST['btnAddCart'])){
+        $sp_ma = $_POST['sp_ma'];
+        $ctdh_soluong = $_POST['ctdh_soluong'];
+
+        
+    }
+
+    if(isset($_POST['btnSave'])){
+        $kh_tendangnhap = $_POST['kh_tendangnhap'];
+        $dh_noigiao = $_POST['dh_noigiao'];
+        $dh_trangthai = $_POST['dh_trangthai'];
+        $httt_ma = $_POST['httt_ma'];
+        $dh_trangthai = $_POST['dh_trangthai'];
+    }
+    ?>
 
     <!-- footer -->
     <?php include_once(__DIR__ . '/../../layouts/partials/footer.php'); ?>
@@ -214,7 +229,7 @@ EOT;
             var sp_ma = $('#sp_ma').val();
             var sp_gia = $('#sp_ma option:selected').data('sp_gia');
             var sp_ten = $('#sp_ma option:selected').text();
-            var soluong = $('#soluong').val();
+            var ctdh_soluong = $('#ctdh_soluong').val();
             var thanhtien = (soluong * sp_gia);
 
             // Tạo mẫu trong html table
