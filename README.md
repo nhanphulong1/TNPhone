@@ -4,7 +4,7 @@ web backend
 
 --Trang web được chia làm 2 phần:
 
--Phần cho người dùng gồm:
+*Phần cho người dùng gồm:
   +Trang chủ: giới thiệu các sản phẩm nổi bật;
   +Sản Phẩm: Chứa tất cả các sản phẩm. Có thể tìm theo nhà sản xuất hoặc tìm theo tên sản phẩm trên thanh tìm kiếm và nhấn enter.
   +Giới thiệu: Giới thiệu về công ty TNPhone.
@@ -21,6 +21,9 @@ web backend
   +Chi tiết sản phẩm: Là nơi khách hàng có thể xem thông tin chi tiết về sản phẩm nào đó.
   +Đăng xuất: Ấn vào để đăng xuất khỏi tài khoản.
   
--Phần cho người quản lý trang web:-->Đầu tiên để vào được trang dành cho người quản lý cần phải đăng nhập ở trang đăng nhập với --tài khoản: admin --mật khẩu: admin
-+dashboard: hiển thị các thông tin dữ liệu.
-+CURD: quản lý thêm sửa xóa các bảng trong csdl như đơn hàng, sản phẩm, hình sản phẩm, khách hàng, khuyến mãi.
+*Phần cho người quản lý trang web:
+- Đầu tiên để vào được trang dành cho người quản lý cần phải đăng nhập ở trang đăng nhập với --tài khoản: admin --mật khẩu: admin.
+- Sử dụng session để lưu tiến trình đăng nhập của người quản trị.
+- dashboard: hiển thị các thông tin dữ liệu.
+- Có các chức năng xem, thêm, sửa, xóa dữ liệu của các bảng trong csdl.
+- Có chức năng tạo đơn hàng, lưu thông tin đơn, xóa và in đơn hàng.
