@@ -46,13 +46,14 @@
             </form>
         </div>
     </div>
+    <?php session_start(); ?>
     <?php
         if(isset($_POST['btnDangNhap'])){
             $kh_tendangnhap = $_POST['kh_tendangnhap'];
             $kh_matkhau = $_POST['kh_matkhau'];
 
             if($kh_tendangnhap=='admin' && $kh_matkhau =='admin'){
-                // setcookie("kh_tendangnhap",$kh_tendangnhap,time()+3600,"/");
+                $_SESSION['dangnhap'] = true;
                 echo "<script>location.href='/TNPhone/backend/pages/dashboard.php';</script>";
             }else{
                 $password = md5($kh_matkhau);

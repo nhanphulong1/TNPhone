@@ -5,4 +5,5 @@
       <a class="nav-link" href="/TNPhone/backend/pages/dashboard.php">Admin Page</a>
     </li>
   </ul>
+  <a href="/TNPhone/backend/pages/dangxuat.php" class="nav-link text-right">Đăng xuất</i></a>
 </nav>
