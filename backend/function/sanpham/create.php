@@ -167,11 +167,11 @@ EOT;
             ];
         }
 
-        // Minlength 10
-        if (!empty($sp_ten) && strlen($sp_ten) < 10) {
+        // Minlength 5
+        if (!empty($sp_ten) && strlen($sp_ten) < 5) {
             $errors['sp_ten'][] = [
                 'rule' => 'minlength',
-                'rule_value' => 10,
+                'rule_value' => 5,
                 'value' => $sp_ten,
                 'msg' => 'Tên sản phẩm phải có ít nhất 10 ký tự'
             ];
