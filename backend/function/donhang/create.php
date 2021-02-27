@@ -185,19 +185,51 @@ EOT;
     </div>
 
     <?php
-    if(isset($_POST['btnAddCart'])){
-        $sp_ma = $_POST['sp_ma'];
-        $ctdh_soluong = $_POST['ctdh_soluong'];
 
-        
-    }
-
-    if(isset($_POST['btnSave'])){
+    if (isset($_POST['btnSave'])) {
+        // 1. Phân tách lấy dữ liệu người dùng gởi từ REQUEST POST
+        // Thông tin đơn hàng
         $kh_tendangnhap = $_POST['kh_tendangnhap'];
         $dh_noigiao = $_POST['dh_noigiao'];
         $dh_trangthai = $_POST['dh_trangthai'];
         $httt_ma = $_POST['httt_ma'];
-        $dh_trangthai = $_POST['dh_trangthai'];
+
+        // Thông tin các dòng chi tiết đơn hàng
+        $arr_sp_ma = $_POST['sp_ma'];                   // mảng array do đặt tên name="sp_ma[]"
+        $arr_ctdh_soluong = $_POST['ctdh_soluong'];   // mảng array do đặt tên name="ctdh_soluong[]"
+        $arr_ctdh_gia = $_POST['ctdh_gia'];     // mảng array do đặt tên name="ctdh_gia[]"
+
+        // 2. Thực hiện câu lệnh Tạo mới (INSERT) Đơn hàng
+        // Câu lệnh INSERT
+        $sqlInsertDonHang = <<<EOT
+                        INSERT INTO donhang (dh_trangthai, dh_noigiao, httt_ma, kh_tendangnhap)
+	                    VALUES ($dh_trangthai, '$dh_noigiao', $httt_ma, '$kh_tendangnhap')
+EOT;
+        // Thực thi INSERT Đơn hàng
+        $resultInsertDonHang = mysqli_query($conn, $sqlInsertDonHang);
+
+        // 3. Lấy ID Đơn hàng mới nhất vừa được thêm vào database
+        // Do ID là tự động tăng (PRIMARY KEY và AUTO INCREMENT), nên chúng ta không biết được ID đă tăng đến số bao nhiêu?
+        // Cần phải sử dụng biến `$conn->insert_id` để lấy về ID mới nhất
+        // Nếu thực thi câu lệnh INSERT thành công thì cần lấy ID mới nhất của Đơn hàng để làm khóa ngoại trong Chi tiết đơn hàng
+        $dh_ma = $conn->insert_id;
+
+        // 4. Duyệt vòng lặp qua mảng các dòng Sản phẩm của chi tiết đơn hàng được gởi đến qua request POST
+        for ($i = 0; $i < count($arr_sp_ma); $i++) {
+            // 4.1. Chuẩn bị dữ liệu cho câu lệnh INSERT vào table `chitietdathang`
+            $sp_ma = $arr_sp_ma[$i];
+            $ctdh_soluong = $arr_ctdh_soluong[$i];
+            $ctdh_gia = $arr_ctdh_gia[$i];
+
+            // 4.2. Câu lệnh INSERT
+            $sqlInsertChiTietDatHang = "INSERT INTO chitietdathang	(sp_ma, dh_ma, ctdh_soluong, ctdh_gia)	VALUES ($sp_ma, $dh_ma, $ctdh_soluong, $ctdh_gia)";
+
+            // 4.3. Thực thi câu lệnh
+            $resultInsertChiTietDH = mysqli_query($conn, $sqlInsertChiTietDatHang);
+        }
+
+        
+        // echo '<script>location.href = "index.php";</script>';
     }
     ?>
 
@@ -230,12 +262,12 @@ EOT;
             var sp_gia = $('#sp_ma option:selected').data('sp_gia');
             var sp_ten = $('#sp_ma option:selected').text();
             var ctdh_soluong = $('#ctdh_soluong').val();
-            var thanhtien = (soluong * sp_gia);
+            var thanhtien = (ctdh_soluong * sp_gia);
 
             // Tạo mẫu trong html table
             var htmlStr = '<tr>';
             htmlStr += '<td>' + sp_ten + '<input type="hidden" name="sp_ma[]" value="' + sp_ma + '" /></td>';
-            htmlStr += '<td>' + soluong + '<input type="hidden" name="ctdh_soluong[]" value="' + soluong + '" /></td>';
+            htmlStr += '<td>' + ctdh_soluong + '<input type="hidden" name="ctdh_soluong[]" value="' + ctdh_soluong + '" /></td>';
             htmlStr += '<td class="text-right">' + formatNumber(sp_gia, '.', ',') + '<input type="hidden" name="ctdh_gia[]" value="' + sp_gia + '" /></td>';
             htmlStr += '<td class="text-right">' + formatNumber(thanhtien, '.', ',') + '</td>';
             htmlStr += '<td><button type="button" class="btn btn-danger btn-delete-row"><i class="fa fa-trash"></i></button>';
@@ -246,7 +278,7 @@ EOT;
 
             //Clear
             $('#sp_ma').val('');
-            $('#soluong').val('');
+            $('#ctdh_soluong').val('');
 
             // Đăng ký sự kiện xóa chi tiết đơn hàng
             $('#chiTietDonHangContainer').on('click', '.btn-delete-row', function() {

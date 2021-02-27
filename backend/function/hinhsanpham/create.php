@@ -78,15 +78,18 @@
                 if (isset($_POST['btnSave'])) {
                     $sp_ma = $_POST['sp_ma'];
 
+                    // Kiểm tra ràng buộc dữ liệu (Validation)
+                    // Tạo biến lỗi để chứa thông báo lỗi
                     $errors = [];
-                    // Validate sản phẩm
-                    // Require
-                    if (empty($sp_ma)) {
-                        $errors['sp_ma'][] = [
+
+                    // Validate tên sản phẩm
+                    // Required
+                    if (empty($sp_ten)) {
+                        $errors['sp_ten'][] = [
                             'rule' => 'required',
                             'rule_value' => true,
-                            'value' => $sp_ma,
-                            'msg' => 'Vui lòng chọn sản phẩm'
+                            'value' => $sp_ten,
+                            'msg' => 'Vui lòng nhập tên sản phẩm'
                         ];
                     }
                 }

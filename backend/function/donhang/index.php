@@ -68,7 +68,7 @@ EOT;
                 ?>
                 <a href="create.php" class="btn btn-primary">Thêm mới</a>
 
-                <table id="tblDH" width="100%" class="table table-bodered">
+                <table id="tblDonHang" width="100%" class="table table-bodered">
                     <thead>
                         <tr>
                             <th>Mã ĐH</th>
@@ -100,7 +100,7 @@ EOT;
                                 <td style="text-align: right;"> <?= $dh['TongThanhTien']; ?> </td>
                                 <td>
                                     <a class="btn btn-primary" href="print.php?dh_ma=<?= $dh['dh_ma']; ?>"><i class="fa fa-print"></i></a>
-                                    <a class="btn btn-danger" href="delete.php?dh_ma=<?= $dh['dh_ma']; ?>"><i class="fa fa-trash"></i></a>
+                                    <a class="btn btn-danger" onclick="confirmDelete(<?= $dh['dh_ma']; ?>)"><i class="fa fa-trash"></i></a>
                                 </td>
 
                             </tr>
@@ -124,19 +124,28 @@ EOT;
 
     <!-- Nhúng file quản lý phần SCRIPT JAVASCRIPT -->
     <?php include_once(__DIR__ . '/../../layouts/scripts.php'); ?>
+
+    <!-- Các file Javascript sử dụng riêng cho trang này, liên kết tại đây -->
     <script>
         $(document).ready(function() {
-            $('#tblDH').DataTable({
+            $('#tblDonHang').DataTable({
                 dom: 'Blfrtip',
                 buttons: [
                     'copy', 'excel', 'pdf'
                 ]
             });
         });
+
+        function confirmDelete(dh_ma) {
+            var result = confirm("Xóa dòng này?");
+            var url = 'delete.php?hsp_ma=' + dh_ma;
+            if (result == true) {
+
+                location.href = url;
+            }
+        }
     </script>
 
-    <!-- Các file Javascript sử dụng riêng cho trang này, liên kết tại đây -->
-    <!-- <script src="..."></script> -->
 </body>
 
 </html>
