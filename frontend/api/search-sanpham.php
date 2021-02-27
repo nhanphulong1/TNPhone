@@ -26,7 +26,7 @@
         if($sp['sp_hinhdaidien']!= ''){
             echo "<img src='/TNPhone/assets/uploads/products/".$sp['sp_hinhdaidien']."'>";
         }else
-            echo "<img src='/TNPhone/assets/uploads/products/default-image.jpg'>";
+            echo "<img src='/TNPhone/shared/default-image.jpg'>";
         echo "<h6>".$sp['sp_ten']."</h6>";
         echo "<span class='giasp'>".number_format($sp['sp_gia'],0,".",",")." VNĐ</span>";
         echo "</li>";
