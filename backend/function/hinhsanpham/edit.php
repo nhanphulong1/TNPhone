@@ -80,6 +80,7 @@
                             <?php endforeach; ?>
                         </select>
                     </div>
+                    <br>
                     <div class="form-group">
                         <img src="/TNPhone/assets/uploads/products/<?= $rowHSP['hsp_tentaptin']; ?>" id="preview-img" width="200px">
                     </div>
@@ -87,6 +88,7 @@
                         <label>Hình ảnh</label> <br>
                         <input type="file" name="hsp_tentaptin" id="hsp_tentaptin" class="form-control">
                     </div>
+                    <br>
                     <div class="row">
                         <div class="col-md-6 text-right">
                             <button name="btnSave" class="btn btn-primary">Lưu hình</button>
@@ -95,6 +97,7 @@
                             <a href="index.php" class="btn btn-secondary">Hủy</a>
                         </div>
                     </div>
+                    <br>
                 </form>
                 <!-- endcontent -->
                 <?php
